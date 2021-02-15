@@ -1,5 +1,5 @@
 ## randomNumber();
-Generate random number between min and max numbers.
+Generates a random number between min and max numbers.
 ``` js
 /**
  * Generating random integers between min and max.
@@ -33,8 +33,7 @@ console.log(capitalize("cat")); // Cat
 ```
 
 ## truncate();
-This is useful with long strings, especially inside tables.
-I usually use this function in combination with Tooltips.
+Usually used in combination with Tooltips.
 
 ```js
 
@@ -51,9 +50,7 @@ export const truncate = (text, num = 10) => {
 };
 
 // Example
-console.log(truncate("this is some long string to be truncated"));  
-
-// this is...
+console.log(truncate("this is some long string to be truncated"));  // this is...
 
 ```
 
@@ -71,7 +68,7 @@ export const toTop = () => {
 
 ```
 ## softDeepClone();
-This function is amazing because with it you can deeply clone even `nested` arrays or objects.
+Deeply clone even `nested` arrays or objects.
 
 > This function doesn't work with data types like `new Date()`, `NaN`, `undefined`, `function`, `Number`, `Infinity`.
 If you want to deep clone the mentioned data type you can use [lodash](https://lodash.com/docs/4.17.15#cloneDeep) `cloneDeep();` function. 
