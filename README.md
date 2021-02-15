@@ -1,5 +1,5 @@
 ## randomNumber();
-Get random number between min and max numbers.
+Generate random number between min and max numbers.
 ``` js
 /**
  * Generating random integers between min and max.
@@ -87,7 +87,7 @@ export const softDeepClone= (input) => JSON.parse(JSON.stringify(input));
 ```
 
 ## appendURLParams(); & getURLParams();
-A quick way to append and get query strings, I usually use them to store pagination meta data to the url.
+Append and get query strings, (Usually used with pagination).
 
 ```js
 
@@ -117,7 +117,7 @@ console.log(getURLParams(id)) // 5
 ```
 
 ## getInnerHTML();
-I use this whenever I got a situation that the server returns a string of HTML elements.
+Getting inner text inside a `stringed` HTML.
 
 ```js
 
@@ -129,7 +129,7 @@ export const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "");
 
 ```
 ## toggleStrNum();
-I usually use this to deal with the backend that sends and accepts string numbers.
+Usually used to deal with the server that sends and accepts string numbers.
 
 ```js
 
@@ -143,7 +143,7 @@ export const toggleStrNum = (strNum) => (strNum === "0" ? "1" : "0");
 
 ## scrollToHide();
 Scroll up to show the HTML element and down to hide it.
-As simple as that.
+
 ```js
 
 /**
@@ -167,7 +167,7 @@ export const scrollToHide = (id, distance) => {
 ```
 
 ## humanFileSize ();
-Just pass the file size in `Bytes` and it will return the Human Readable formate for you.
+Converts the file size in `Bytes`, and Returns the result in a Human Readable formate.
 
 ```js
 
@@ -202,8 +202,7 @@ console.log(humanFileSize(456465465)); // 456.5 MB
 ```
 
 ## getTimes();
-Do you have a DDL that displays times of the day every `n` Minutes?
-Just use this function.
+Returns times of the day every `n` Minutes?
 
 ```js
 
@@ -246,8 +245,7 @@ console.log(getTimes());
 
 ```
 ## setLocalItem(); & getLocalItem();
-Have you ever wanted to cache data in `LocalStorage` with expiry date?
-With these two functions, you can do so.
+Caching data in `LocalStorage` with expiry date.
 
 ```js
 /**
@@ -292,7 +290,7 @@ export const getLocalItem = (key) => {
 
 ```
 ## logFormattedStrings();
-Very handy function to log any input in a human friendly string to the console.
+Logs any input in a human friendly string to the console.
 
 ```js
 /**
@@ -342,7 +340,6 @@ console.log(toEGPCurrency(78899985)); // ٧٨٬٨٩٩٬٩٨٥٫٠٠ ج.م.
 
 ```
 ## toFormData();
-I use this function whenever I need to send a File to the server.
 
 ```js
 /**
@@ -362,8 +359,8 @@ export const toFormData = (obj) => {
 };
 
 ```
-##getScreenWidth();
-Get a string representing the width of the screen.
+## getScreenWidth();
+Retuns a string representing the width of the screen.
 
 ```js
 /**
