@@ -1,0 +1,23 @@
+{
+  "name": "javascript-functions",
+  "version": "1.0.0",
+  "description": "Commonly used JavaScript Functions",
+  "main": "JavaScriptFunctions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoussefZidan/JavaScript-Functions.git"
+  },
+  "keywords": [
+    "javascript",
+    "functions"
+  ],
+  "author": "Youssef Zidan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoussefZidan/JavaScript-Functions/issues"
+  },
+  "homepage": "https://github.com/YoussefZidan/JavaScript-Functions#readme"
+}
