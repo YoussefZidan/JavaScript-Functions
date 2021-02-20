@@ -93,8 +93,9 @@ Append and get query strings, (Usually used with pagination).
  * @param {string} key
  * @param {string} value
  */
-export const appendURLParams = (key, value) => {
-  const searchParams = new URLSearchParams(window.location.search).set(key, value);
+export const appendURLParams = (paramName, value) => {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set(paramName, value);
   return searchParams.toString();
 };
 

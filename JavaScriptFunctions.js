@@ -50,8 +50,9 @@ export const getURLParams = (name) => new URLSearchParams(window.location.search
  * @param {string} key
  * @param {string} value
  */
-export const appendURLParams = (key, value) => {
-  const searchParams = new URLSearchParams(window.location.search).set(key, value);
+export const appendURLParams = (paramName, value) => {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set(paramName, value);
   return searchParams.toString();
 };
 
@@ -112,6 +113,10 @@ export const containsAll = (baseArr, arr) => {
 
   return all;
 };
+
+export const exsist = (baseArr, arr) => {
+  return arr.some((r) => baseArr.includes(r));
+}
 
 /**
  * Getting the inner `Text` of an `HTML` string
