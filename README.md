@@ -403,11 +403,11 @@ export const containsAll = (baseArr, arr) => {
 
 ## getUniqueObjs();
 
-Returnes a unique array of objects based on a key
+Returns a unique array of objects based on a key
 
 ```js
 /**
- * Returnes a unique array of objects based on a key
+ * Returns a unique array of objects based on a key
  * @param {array} array Array of objects
  */
 export const getUniqueObjs = (array, key = "id") => {

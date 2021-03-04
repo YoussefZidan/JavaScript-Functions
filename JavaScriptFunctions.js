@@ -256,7 +256,7 @@ export const toUSDCurrency = (num) =>
   num.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
 /**
- * Returnes a unique array of objects based on a key
+ * Returns a unique array of objects based on a key
  * @param {array} array Array of objects
  */
 export const getUniqueObjs = (array, key = "id") => {
