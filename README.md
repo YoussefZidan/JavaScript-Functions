@@ -1,6 +1,8 @@
 ## randomNumber();
+
 Generates a random number between min and max numbers.
-``` js
+
+```js
 /**
  * Generating random integers between min and max.
  * @param {number} min Min number
@@ -11,10 +13,10 @@ export const randomNumber = (min = 0, max = 1000) =>
 
 // Example
 console.log(randomNumber()); // 97
-
 ```
 
 ## capitalize();
+
 Making the first letter of a string to Uppercase.
 
 ```js
@@ -29,14 +31,13 @@ export const capitalize = (s) => {
 
 // Example
 console.log(capitalize("cat")); // Cat
-
 ```
 
 ## truncate();
+
 Usually used in combination with Tooltips.
 
 ```js
-
 /**
  * Truncating a string...
  * @param {string} text String to be truncated
@@ -50,44 +51,42 @@ export const truncate = (text, num = 10) => {
 };
 
 // Example
-console.log(truncate("this is some long string to be truncated"));  // this is...
-
+console.log(truncate("this is some long string to be truncated")); // this is...
 ```
 
 ## toTop();
+
 You can remove the `behavior` property for instant scrolling to the top.
 
 ```js
-
 /**
  * Scroll to top
  */
 export const toTop = () => {
   window.scroll({ top: 0, left: 0, behavior: "smooth" });
 };
-
 ```
+
 ## softDeepClone();
+
 Deeply clone even `nested` arrays or objects.
 
 > This function doesn't work with data types like `new Date()`, `NaN`, `undefined`, `function`, `Number`, `Infinity`.
-If you want to deep clone the mentioned data type you can use [lodash](https://lodash.com/docs/4.17.15#cloneDeep) `cloneDeep();` function. 
+> If you want to deep clone the mentioned data type you can use [lodash](https://lodash.com/docs/4.17.15#cloneDeep) `cloneDeep();` function.
 
 ```js
-
 /**
  * Deep cloning inputs
  * @param {any} input Input
  */
-export const softDeepClone= (input) => JSON.parse(JSON.stringify(input));
-
+export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
 ```
 
 ## appendURLParams(); & getURLParams();
+
 Append and get query strings, (Usually used with pagination).
 
 ```js
-
 /**
  * Appen query string and return the value in a query string format.
  * @param {string} key
@@ -100,50 +99,48 @@ export const appendURLParams = (paramName, value) => {
 };
 
 // example
-console.log(appendURLParams("name", "youssef")) // name=youssef
+console.log(appendURLParams("name", "youssef")); // name=youssef
 
 /**
  * Get param name from URL.
  * @param {string} name
  */
-export const getURLParams = (name) => new URLSearchParams(window.location.search).get(name);
+export const getURLParams = (name) =>
+  new URLSearchParams(window.location.search).get(name);
 
 // Example
-console.log(getURLParams(id)) // 5
-
-
+console.log(getURLParams(id)); // 5
 ```
 
 ## getInnerHTML();
+
 Getting inner text inside a `stringed` HTML.
 
 ```js
-
 /**
  * Getting the inner `Text` of an `HTML` string
  * @param {string} str A string of HTML
  */
 export const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "");
-
 ```
+
 ## toggleStrNum();
+
 Usually used to deal with the server that sends and accepts string numbers.
 
 ```js
-
 /**
  *  returning "1" from "0" and the opposit.
  * @param {string} strNum String Number ex: "0", "1"
  */
 export const toggleStrNum = (strNum) => (strNum === "0" ? "1" : "0");
-
 ```
 
 ## scrollToHide();
+
 Scroll up to show the HTML element and down to hide it.
 
 ```js
-
 /**
  * Hide HTML element when scrolling down.
  * @param {string} id the `id` of an `HTML` element
@@ -161,14 +158,13 @@ export const scrollToHide = (id, distance) => {
     prevScrollpos = currentScrollPos;
   };
 };
-
 ```
 
 ## humanFileSize ();
+
 Converts the file size in `Bytes`, and Returns the result in a Human Readable formate.
 
 ```js
-
 /**
  * Converting Bytes to Readable Human File Sizes.
  * @param {number} bytes Bytes in Number
@@ -189,25 +185,27 @@ export const humanFileSize = (bytes) => {
   do {
     BYTES /= thresh;
     u += 1;
-  } while (Math.round(Math.abs(BYTES) * r) / r >= thresh && u < units.length - 1);
+  } while (
+    Math.round(Math.abs(BYTES) * r) / r >= thresh &&
+    u < units.length - 1
+  );
 
   return `${BYTES.toFixed(1)} ${units[u]}`;
 };
 
 // Example
 console.log(humanFileSize(456465465)); // 456.5 MB
-
 ```
 
 ## getTimes();
+
 Returns times of the day every `n` Minutes?
 
 ```js
-
 /**
  * Getting an Array of Times + "AM" or "PM".
  * @param {number} minutesInterval
- * @param {number} startTime 
+ * @param {number} startTime
  */
 export const getTimes = (minutesInterval = 15, startTime = 60) => {
   const times = []; // time array
@@ -219,9 +217,9 @@ export const getTimes = (minutesInterval = 15, startTime = 60) => {
   for (let i = 0; tt < 24 * 60; i += 1) {
     const hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
     const mm = tt % 60; // getting minutes of the hour in 0-55 format
-    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(-2)} ${
-      ap[Math.floor(hh / 12)]
-    }`; // pushing data in array in [00:00 - 12:00 AM/PM format]
+    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(
+      -2
+    )} ${ap[Math.floor(hh / 12)]}`; // pushing data in array in [00:00 - 12:00 AM/PM format]
     tt += x;
   }
   return times;
@@ -240,9 +238,10 @@ console.log(getTimes());
     // ....
     ]
 */
-
 ```
+
 ## setLocalItem(); & getLocalItem();
+
 Caching data in `LocalStorage` with expiry date.
 
 ```js
@@ -262,7 +261,6 @@ export const setLocalItem = (key, value, ttl = duration.month) => {
   };
   localStorage.setItem(key, JSON.stringify(item));
 };
-
 
 /**
  * Getting values with expiry date from LocalHost that stored with `setLocalItem`.
@@ -285,9 +283,10 @@ export const getLocalItem = (key) => {
   }
   return item.value;
 };
-
 ```
+
 ## logFormattedStrings();
+
 Logs any input in a human friendly string to the console.
 
 ```js
@@ -295,9 +294,10 @@ Logs any input in a human friendly string to the console.
  * Logging formatted strings
  * @param {any} input
  */
-export const logFormattedStrings = (input) => console.log(JSON.stringify(input, null, 4));
+export const logFormattedStrings = (input) =>
+  console.log(JSON.stringify(input, null, 4));
 
-// Example 
+// Example
 logFormattedStrings({ fName: "Youssef", lName: "Zidan" });
 /*
  {
@@ -305,12 +305,11 @@ logFormattedStrings({ fName: "Youssef", lName: "Zidan" });
    "lName": "Zidan"
  } 
 */
-
 ```
+
 ## formatNumber();
 
 ```js
-
 /**
  * Format numbers with separators.
  * @param {number} num
@@ -319,10 +318,10 @@ export const formatNumber = (num) => num.toLocaleString();
 
 // Example
 console.log(formatNumber(78899985)); // 78,899,985
-
 ```
+
 > You can also add other options to get other number formats such as currency, distance, weights, etc...
-more details [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+> more details [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
 
 And here are two examples
 
@@ -335,8 +334,8 @@ export const toUSDCurrency = (num) =>
 
 console.log(toUSDCurrency(78899985)); // $78,899,985.00
 console.log(toEGPCurrency(78899985)); // ٧٨٬٨٩٩٬٩٨٥٫٠٠ ج.م.
-
 ```
+
 ## toFormData();
 
 ```js
@@ -355,9 +354,10 @@ export const toFormData = (obj) => {
   });
   return formBody;
 };
-
 ```
+
 ## getScreenWidth();
+
 Retuns a string representing the width of the screen.
 
 ```js
@@ -373,9 +373,10 @@ export const getScreenWidth = () => {
   if (screenWidth <= 2560) return "HD";
   return screenWidth;
 };
-
 ```
+
 ## containsAll();
+
 Check that every element in an array exsists in the another array.
 
 ```js
@@ -397,5 +398,27 @@ export const containsAll = (baseArr, arr) => {
   }
 
   return all;
+};
+```
+
+## getUniqueObjs();
+
+Returnes a unique array of objects based on a key
+
+```js
+/**
+ * Returnes a unique array of objects based on a key
+ * @param {array} array Array of objects
+ */
+export const getUniqueObjs = (array, key = "id") => {
+  const ids = [];
+  const output = [];
+  array.forEach((ele) => {
+    if (!ids.includes(ele[key])) {
+      ids.push(ele[key]);
+      output.push(ele);
+    }
+  });
+  return output;
 };
 ```

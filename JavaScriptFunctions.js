@@ -3,7 +3,8 @@
  * @param {number} min Min number
  * @param {number} max Max Number
  */
-export const randomNumber = (min = 0, max = 1000) => Math.ceil(min + Math.random() * (max - min));
+export const randomNumber = (min = 0, max = 1000) =>
+  Math.ceil(min + Math.random() * (max - min));
 
 /**
  * Capitalize Strings.
@@ -43,7 +44,8 @@ export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
  * Get param name from URL.
  * @param {string} name
  */
-export const getURLParams = (name) => new URLSearchParams(window.location.search).get(name);
+export const getURLParams = (name) =>
+  new URLSearchParams(window.location.search).get(name);
 
 /**
  * Appen query string and return the value in a query string format.
@@ -116,7 +118,7 @@ export const containsAll = (baseArr, arr) => {
 
 export const exsist = (baseArr, arr) => {
   return arr.some((r) => baseArr.includes(r));
-}
+};
 
 /**
  * Getting the inner `Text` of an `HTML` string
@@ -142,9 +144,13 @@ export const scrollToHide = (id, distance) => {
   window.onscroll = () => {
     const currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
-      document.getElementById(id).style.transform = `translateY(${distanceDown}px)`;
+      document.getElementById(
+        id
+      ).style.transform = `translateY(${distanceDown}px)`;
     } else {
-      document.getElementById(id).style.transform = `translateY(-${distanceUp}px)`;
+      document.getElementById(
+        id
+      ).style.transform = `translateY(-${distanceUp}px)`;
     }
     prevScrollpos = currentScrollPos;
   };
@@ -170,7 +176,10 @@ export const humanFileSize = (bytes) => {
   do {
     BYTES /= thresh;
     u += 1;
-  } while (Math.round(Math.abs(BYTES) * r) / r >= thresh && u < units.length - 1);
+  } while (
+    Math.round(Math.abs(BYTES) * r) / r >= thresh &&
+    u < units.length - 1
+  );
 
   return `${BYTES.toFixed(1)} ${units[u]}`;
 };
@@ -190,9 +199,9 @@ export const getTimes = (minutesInterval = 15, startTime = 60) => {
   for (let i = 0; tt < 24 * 60; i += 1) {
     const hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
     const mm = tt % 60; // getting minutes of the hour in 0-55 format
-    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(-2)} ${
-      ap[Math.floor(hh / 12)]
-    }`; // pushing data in array in [00:00 - 12:00 AM/PM format]
+    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(
+      -2
+    )} ${ap[Math.floor(hh / 12)]}`; // pushing data in array in [00:00 - 12:00 AM/PM format]
     tt += x;
   }
   return times;
@@ -202,7 +211,8 @@ export const getTimes = (minutesInterval = 15, startTime = 60) => {
  * Logging formatted strings.
  * @param {any} input
  */
-export const logFormattedStrings = (input) => console.log(JSON.stringify(input, null, 4));
+export const logFormattedStrings = (input) =>
+  console.log(JSON.stringify(input, null, 4));
 
 /**
  * Convert Objects to Form Data Format.
@@ -244,3 +254,19 @@ export const toEGPCurrency = (num) =>
 
 export const toUSDCurrency = (num) =>
   num.toLocaleString("en-US", { style: "currency", currency: "USD" });
+
+/**
+ * Returnes a unique array of objects based on a key
+ * @param {array} array Array of objects
+ */
+export const getUniqueObjs = (array, key = "id") => {
+  const ids = [];
+  const output = [];
+  array.forEach((ele) => {
+    if (!ids.includes(ele[key])) {
+      ids.push(ele[key]);
+      output.push(ele);
+    }
+  });
+  return output;
+};
