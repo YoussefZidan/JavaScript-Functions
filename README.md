@@ -422,3 +422,29 @@ export const getUniqueObjs = (array, key = "id") => {
   return output;
 };
 ```
+
+## preventChars()
+
+Prevent input from typing certain keyboard chars.
+
+```js
+/**
+ * Prevent input from typing certain keyboard chars passed as an array of chars.
+ * @param {event} input event
+ * @param {Array<string>} array of chars
+ */
+export const preventChars = (event, charArr) =>
+  charArr.includes(event.key) && event.preventDefault();
+```
+### Example 
+
+```jsx
+// html
+<input type="number" id="inp">
+
+// js
+document.getElementById('inp').addEventListener('keydown', e => {
+  const arr = ['e', 'E', '+', '-'];
+  preventChars(e, arr);
+});
+```
