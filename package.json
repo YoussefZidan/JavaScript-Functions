@@ -4,7 +4,7 @@
   "description": "Commonly used JavaScript Functions",
   "main": "JavaScriptFunctions.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/YoussefZidan/JavaScript-Functions/issues"
   },
-  "homepage": "https://github.com/YoussefZidan/JavaScript-Functions#readme"
+  "homepage": "https://github.com/YoussefZidan/JavaScript-Functions#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@types/jest": "^26.0.23",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6"
+  }
 }
