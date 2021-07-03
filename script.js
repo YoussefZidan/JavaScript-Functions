@@ -123,6 +123,18 @@ export const getUniqueObjs = (array, key = "id") => {
   return output;
 };
 
+// ======================================================================== //
+
+/**
+ * Converts CamelCase string into string with spaces
+ * @param {string} str CamelCase string
+ * @returns {string}
+ */
+export const replaceCamelCaseWithSpaces = (str) =>
+  str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+
+// ======================================================================== //
+
 /**
  * Detect screen width and returns a string representing the width of the screen.
  */
@@ -139,8 +151,8 @@ export const getScreenWidth = () => {
 /**
  * Scroll to top
  */
-export const toTop = () => {
-  window.scroll({ top: 0, left: 0, behavior: "smooth" });
+export const toTop = (behavior = "smooth") => {
+  window.scroll({ top: 0, left: 0, behavior });
 };
 
 /**
@@ -153,10 +165,7 @@ export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
  * Get param name from URL.
  * @param {string} name
  */
-export const getURLParams = (name, dom = null) => {
-  if (dom) {
-    return new URLSearchParams(dom.window.location.search).get(name);
-  }
+export const getURLParams = (name) => {
   return new URLSearchParams(window.location.search).get(name);
 };
 

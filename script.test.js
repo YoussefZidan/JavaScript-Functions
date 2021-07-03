@@ -107,16 +107,6 @@ describe("humanFileSize()", () => {
   });
 });
 
-// describe("getURLParams()", () => {
-//   it("XXX", () => {
-//     const { JSDOM } = jsdom;
-//     const dom = new JSDOM(``, {
-//       url: "https://example.org?id=5",
-//     });
-//     expect(jsf.getURLParams("id", dom)).toBe("5");
-//   });
-// });
-
 describe("formatNumber()", () => {
   it("returns formatted numbers", () => {
     expect(jsf.formatNumber(123456)).toBe("123,456");
@@ -136,5 +126,33 @@ describe("getUniqueObjs()", () => {
     ];
     const uniqArr = [{ id: 1, name: "1" }];
     expect(jsf.getUniqueObjs(arr)).toEqual(uniqArr);
+  });
+});
+
+describe("replaceCamelCaseWithSpaces()", () => {
+  it("Converts CamelCase string into string with spaces", () => {
+    expect(jsf.replaceCamelCaseWithSpaces("ACamelCaseString")).toEqual(
+      "A Camel Case String"
+    );
+  });
+});
+
+describe("getScreenWidth()", () => {
+  it.only("returns a string representing the width of the screen", () => {
+    const mockScreen = (size) => {
+      global.window = {};
+      global.window.screen = {};
+      global.window.screen.width = size;
+    };
+    mockScreen(425);
+    expect(jsf.getScreenWidth()).toBe("mobile");
+    mockScreen(768);
+    expect(jsf.getScreenWidth()).toBe("tablet");
+    mockScreen(1024);
+    expect(jsf.getScreenWidth()).toBe("laptopSm");
+    mockScreen(1440);
+    expect(jsf.getScreenWidth()).toBe("laptopLg");
+    mockScreen(2560);
+    expect(jsf.getScreenWidth()).toBe("HD");
   });
 });
