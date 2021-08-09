@@ -436,7 +436,8 @@ Prevent input from typing certain keyboard chars.
 export const preventChars = (event, charArr) =>
   charArr.includes(event.key) && event.preventDefault();
 ```
-### Example 
+
+### Example
 
 ```jsx
 // html
@@ -447,4 +448,26 @@ document.getElementById('inp').addEventListener('keydown', e => {
   const arr = ['e', 'E', '+', '-'];
   preventChars(e, arr);
 });
+```
+
+### replaceCamelCaseWithSpaces()
+
+Converts CamelCase string into string with spaces
+
+```js
+/**
+ * Converts CamelCase string into string with spaces
+ * @param {string} str CamelCase string
+ * @returns {string}
+ */
+export const replaceCamelCaseWithSpaces = (str) =>
+  str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+```
+
+### Example
+
+```js
+
+replaceCamelCaseWithSpaces("CamelCaseWord"); // Camel Case Word
+
 ```
