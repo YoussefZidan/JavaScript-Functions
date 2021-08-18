@@ -4,7 +4,7 @@
  * Returns a capitalized String.
  * @param {string} s String that will be Capitalized.
  */
-export const capitalize = (s) => {
+const capitalize = (s) => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
@@ -14,7 +14,7 @@ export const capitalize = (s) => {
  * @param {string} text String to be truncated.
  * @param {number} num Max length of the `String` that will be truncated.
  */
-export const truncate = (text, num = 10) => {
+const truncate = (text, num = 10) => {
   if (text.length > num) {
     return `${text.substring(0, num - 3)}...`;
   }
@@ -25,7 +25,7 @@ export const truncate = (text, num = 10) => {
  * Returns toggled '1' or '0'.
  * @param {string} strNum String number "0" or "1".
  */
-export const toggleStrNum = (strNum) => {
+const toggleStrNum = (strNum) => {
   if (strNum === "0" || strNum === "1") return strNum === "0" ? "1" : "0";
   return null;
 };
@@ -35,14 +35,14 @@ export const toggleStrNum = (strNum) => {
  * @param {string} str CamelCase string
  * @returns {string}
  */
-export const replaceCamelCaseWithSpaces = (str) =>
+const replaceCamelCaseWithSpaces = (str) =>
   str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
 
 /**
  * Logging formatted strings.
  * @param {any} input
  */
-export const logFormattedStrings = (input) =>
+const logFormattedStrings = (input) =>
   console.log(JSON.stringify(input, null, 4));
 
 // =============================== Numbers =========================== //
@@ -53,14 +53,14 @@ export const logFormattedStrings = (input) =>
  * @param {number} max Max Number [default = 1000].
  *
  */
-export const randomNumber = (min = 0, max = 1000) =>
+const randomNumber = (min = 0, max = 1000) =>
   Math.ceil(min + Math.random() * (max - min));
 
 /**
  * Returns Converting Bytes in a Readable Human File Sizes.
  * @param {number} bytes Bytes in number.
  */
-export const humanFileSize = (bytes) => {
+const humanFileSize = (bytes) => {
   let BYTES = bytes;
   const thresh = 1024;
 
@@ -90,7 +90,7 @@ export const humanFileSize = (bytes) => {
  * @param {string} lang visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_locales
  * @param {object} options visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_options
  */
-export const formatNumber = (num, lang, options) =>
+const formatNumber = (num, lang, options) =>
   num.toLocaleString(lang, { ...options });
 
 // =============================== Arrays =========================== //
@@ -100,15 +100,14 @@ export const formatNumber = (num, lang, options) =>
  * @param {array} baseArr The array to make sure it has all the values.
  * @param {arr} arr The other array that will be compared with.
  */
-export const containsAll = (baseArr, arr) =>
-  arr.every((ele) => baseArr.includes(ele));
+const containsAll = (baseArr, arr) => arr.every((ele) => baseArr.includes(ele));
 
 /**
  * Returns a unique array of objects based on a key.
  * @param {array} array Array of objects.
  * @param {string} key A unique property of each object [default = 'id'].
  */
-export const getUniqueObjs = (array, key = "id") => {
+const getUniqueObjs = (array, key = "id") => {
   const ids = [];
   const output = [];
   array.forEach((ele) => {
@@ -125,7 +124,7 @@ export const getUniqueObjs = (array, key = "id") => {
  * @param {number} minutesInterval every *n* minutes [default = 15].
  * @param {number} startTime Starting hour.
  */
-export const getTimes = (minutesInterval = 15, startTime = 60) => {
+const getTimes = (minutesInterval = 15, startTime = 60) => {
   const times = []; // time array
   const x = minutesInterval; // minutes interval
   let tt = startTime; // start time
@@ -149,7 +148,7 @@ export const getTimes = (minutesInterval = 15, startTime = 60) => {
  * Convert Objects to Form Data Format.
  * @param {object} obj
  */
-export const toFormData = (obj) => {
+const toFormData = (obj) => {
   const formBody = new FormData();
   Object.keys(obj).forEach((key) => {
     if (Array.isArray(obj[key])) {
@@ -165,7 +164,7 @@ export const toFormData = (obj) => {
  * Soft Deep cloning inputs
  * @param {any} input Input
  */
-export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
+const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
 
 // =============================== HTML =========================== //
 
@@ -173,14 +172,14 @@ export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
  * Getting the inner `Text` of an `HTML` string.
  * @param {string} str A string of HTML.
  */
-export const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
 
 // =============================== Window =========================== //
 
 /**
  * Detect screen width and returns a string representing the width of the screen.
  */
-export const getScreenWidth = () => {
+const getScreenWidth = () => {
   const screenWidth = window.screen.width;
   if (screenWidth <= 425) return "mobile";
   if (screenWidth <= 768) return "tablet";
@@ -193,7 +192,7 @@ export const getScreenWidth = () => {
 /**
  * Scroll to top
  */
-export const toTop = (behavior = "smooth") => {
+const toTop = (behavior = "smooth") => {
   window.scroll({ top: 0, left: 0, behavior });
 };
 
@@ -201,7 +200,7 @@ export const toTop = (behavior = "smooth") => {
  * Returns param name from a URL.
  * @param {string} name
  */
-export const getURLParams = (name) => {
+const getURLParams = (name) => {
   return new URLSearchParams(window.location.search).get(name);
 };
 
@@ -210,7 +209,7 @@ export const getURLParams = (name) => {
  * @param {string} key
  * @param {string} value
  */
-export const appendURLParams = (paramName, value) => {
+const appendURLParams = (paramName, value) => {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set(paramName, value);
   return searchParams.toString();
@@ -222,7 +221,7 @@ export const appendURLParams = (paramName, value) => {
  * @param {any} value Local Storage Value
  * @param {number} ttl Time to live (Expiry Date in MS)
  */
-export const setLocalItem = (key, value, ttl) => {
+const setLocalItem = (key, value, ttl) => {
   const now = new Date();
   // `item` is an object which contains the original value
   // as well as the time when it's supposed to expire
@@ -237,7 +236,7 @@ export const setLocalItem = (key, value, ttl) => {
  * Getting values with expiry date from LocalStorage that stored with `setLocalItem`.
  * @param {string} key Local Storage Key
  */
-export const getLocalItem = (key) => {
+const getLocalItem = (key) => {
   const itemStr = localStorage.getItem(key);
   // if the item doesn't exist, return null
   if (!itemStr) {
@@ -260,7 +259,7 @@ export const getLocalItem = (key) => {
  * @param {string} id the `id` of an `HTML` element.
  * @param {number} distance An integer of pixels.
  */
-export const scrollToHide = (id, distance) => {
+const scrollToHide = (id, distance) => {
   const distanceDown = distance;
   const distanceUp = distance * 2;
   let prevScrollpos = window.pageYOffset;
@@ -286,5 +285,30 @@ export const scrollToHide = (id, distance) => {
  * @param {event} event input event
  * @param {Array<string>} charArr array of chars
  */
-export const preventChars = (event, charArr) =>
+const preventChars = (event, charArr) =>
   charArr.includes(event.key) && event.preventDefault();
+
+module.exports = {
+  capitalize,
+  truncate,
+  toggleStrNum,
+  replaceCamelCaseWithSpaces,
+  logFormattedStrings,
+  randomNumber,
+  humanFileSize,
+  formatNumber,
+  containsAll,
+  getUniqueObjs,
+  getTimes,
+  toFormData,
+  softDeepClone,
+  getInnerHTML,
+  getScreenWidth,
+  toTop,
+  getURLParams,
+  appendURLParams,
+  setLocalItem,
+  getLocalItem,
+  scrollToHide,
+  preventChars,
+};
