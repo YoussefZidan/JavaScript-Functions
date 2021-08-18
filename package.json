@@ -2,7 +2,7 @@
   "name": "javascript-functions",
   "version": "1.0.0",
   "description": "Commonly used JavaScript Functions",
-  "main": "JavaScriptFunctions.js",
+  "main": "script.js",
   "scripts": {
     "test": "jest"
   },
@@ -12,7 +12,10 @@
   },
   "keywords": [
     "javascript",
-    "functions"
+    "functions",
+    "reusable",
+    "jsf",
+    "utils"
   ],
   "author": "Youssef Zidan",
   "license": "ISC",
