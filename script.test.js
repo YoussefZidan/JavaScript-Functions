@@ -1,5 +1,4 @@
 import * as jsf from "./script";
-import jsdom from "jsdom";
 
 describe("randomNumber()", () => {
   it("should return a random number between min and max", () => {
@@ -138,7 +137,7 @@ describe("replaceCamelCaseWithSpaces()", () => {
 });
 
 describe("getScreenWidth()", () => {
-  it.only("returns a string representing the width of the screen", () => {
+  it("returns a string representing the width of the screen", () => {
     const mockScreen = (size) => {
       global.window = {};
       global.window.screen = {};

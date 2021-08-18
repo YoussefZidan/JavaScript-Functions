@@ -1,28 +1,18 @@
-/**
- * Generating random integers from min to max.
- * @param {number} min Min number
- * @param {number} max Max Number
- */
-export const randomNumber = (min = 0, max = 1000) =>
-  Math.ceil(min + Math.random() * (max - min));
-
-// ======================================================================== //
+// =============================== Strings =========================== //
 
 /**
- * Capitalize Strings.
- * @param {string} s String that will be Capitalized
+ * Returns a capitalized String.
+ * @param {string} s String that will be Capitalized.
  */
 export const capitalize = (s) => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-// ======================================================================== //
-
 /**
- * Truncating a string...
- * @param {string} text String to be truncated
- * @param {number} num Max length of the `String` that will be truncated after
+ * Returns a truncated string.
+ * @param {string} text String to be truncated.
+ * @param {number} num Max length of the `String` that will be truncated.
  */
 export const truncate = (text, num = 10) => {
   if (text.length > num) {
@@ -31,40 +21,44 @@ export const truncate = (text, num = 10) => {
   return text;
 };
 
-// ======================================================================== //
-
 /**
- *  return toggled string '1', '0'.
- * @param {string} strNum String Number ex: "0", "1"
+ * Returns toggled '1' or '0'.
+ * @param {string} strNum String number "0" or "1".
  */
 export const toggleStrNum = (strNum) => {
   if (strNum === "0" || strNum === "1") return strNum === "0" ? "1" : "0";
   return null;
 };
 
-// ======================================================================== //
-
 /**
- * Check that every element in an array exists in the other array.
- * @param {array} baseArr The array to make sure it has all the values
- * @param {arr} arr The other array that will be compared with
+ * Converts CamelCase string into string with spaces
+ * @param {string} str CamelCase string
+ * @returns {string}
  */
-export const containsAll = (baseArr, arr) =>
-  arr.every((ele) => baseArr.includes(ele));
-
-// ======================================================================== //
+export const replaceCamelCaseWithSpaces = (str) =>
+  str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
 
 /**
- * Getting the inner `Text` of an `HTML` string
- * @param {string} str A string of HTML
+ * Logging formatted strings.
+ * @param {any} input
  */
-export const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+export const logFormattedStrings = (input) =>
+  console.log(JSON.stringify(input, null, 4));
 
-// ======================================================================== //
+// =============================== Numbers =========================== //
 
 /**
- *  Converting Bytes to Readable Human File Sizes.
- * @param {number} bytes Bytes in Number
+ * Returns a random number between min to max.
+ * @param {number} min Min number [default = 0].
+ * @param {number} max Max Number [default = 1000].
+ *
+ */
+export const randomNumber = (min = 0, max = 1000) =>
+  Math.ceil(min + Math.random() * (max - min));
+
+/**
+ * Returns Converting Bytes in a Readable Human File Sizes.
+ * @param {number} bytes Bytes in number.
  */
 export const humanFileSize = (bytes) => {
   let BYTES = bytes;
@@ -90,26 +84,29 @@ export const humanFileSize = (bytes) => {
   return `${BYTES.toFixed(1)} ${units[u]}`;
 };
 
-// ======================================================================== //
-
 /**
- * Format numbers with separators.
- * @param {number} num
+ * Returns a formatted number with separators based on Options.
+ * @param {number} num integer.
+ * @param {string} lang visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_locales
+ * @param {object} options visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_options
  */
 export const formatNumber = (num, lang, options) =>
   num.toLocaleString(lang, { ...options });
 
-export const toEGPCurrency = (num) =>
-  num.toLocaleString("ar-EG", { style: "currency", currency: "EGP" });
-
-export const toUSDCurrency = (num) =>
-  num.toLocaleString("en-US", { style: "currency", currency: "USD" });
-
-// ======================================================================== //
+// =============================== Arrays =========================== //
 
 /**
- * Returns a unique array of objects based on a key
- * @param {array} array Array of objects
+ * Check that every element in an array exists in the other array.
+ * @param {array} baseArr The array to make sure it has all the values.
+ * @param {arr} arr The other array that will be compared with.
+ */
+export const containsAll = (baseArr, arr) =>
+  arr.every((ele) => baseArr.includes(ele));
+
+/**
+ * Returns a unique array of objects based on a key.
+ * @param {array} array Array of objects.
+ * @param {string} key A unique property of each object [default = 'id'].
  */
 export const getUniqueObjs = (array, key = "id") => {
   const ids = [];
@@ -123,17 +120,62 @@ export const getUniqueObjs = (array, key = "id") => {
   return output;
 };
 
-// ======================================================================== //
+/**
+ * Getting an Array of Times + "AM" or "PM".
+ * @param {number} minutesInterval every *n* minutes [default = 15].
+ * @param {number} startTime Starting hour.
+ */
+export const getTimes = (minutesInterval = 15, startTime = 60) => {
+  const times = []; // time array
+  const x = minutesInterval; // minutes interval
+  let tt = startTime; // start time
+  const ap = ["AM", "PM"]; // AM-PM
+
+  // loop to increment the time and push results in array
+  for (let i = 0; tt < 24 * 60; i += 1) {
+    const hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
+    const mm = tt % 60; // getting minutes of the hour in 0-55 format
+    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(
+      -2
+    )} ${ap[Math.floor(hh / 12)]}`;
+    tt += x;
+  }
+  return times;
+};
+
+// =============================== Objects =========================== //
 
 /**
- * Converts CamelCase string into string with spaces
- * @param {string} str CamelCase string
- * @returns {string}
+ * Convert Objects to Form Data Format.
+ * @param {object} obj
  */
-export const replaceCamelCaseWithSpaces = (str) =>
-  str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+export const toFormData = (obj) => {
+  const formBody = new FormData();
+  Object.keys(obj).forEach((key) => {
+    if (Array.isArray(obj[key])) {
+      obj[key].forEach((val, i) => {
+        formBody.append(`${key}[${i}]`, val);
+      });
+    } else formBody.append(key, obj[key]);
+  });
+  return formBody;
+};
 
-// ======================================================================== //
+/**
+ * Soft Deep cloning inputs
+ * @param {any} input Input
+ */
+export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
+
+// =============================== HTML =========================== //
+
+/**
+ * Getting the inner `Text` of an `HTML` string.
+ * @param {string} str A string of HTML.
+ */
+export const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+
+// =============================== Window =========================== //
 
 /**
  * Detect screen width and returns a string representing the width of the screen.
@@ -156,13 +198,7 @@ export const toTop = (behavior = "smooth") => {
 };
 
 /**
- * Deep cloning inputs
- * @param {any} input Input
- */
-export const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
-
-/**
- * Get param name from URL.
+ * Returns param name from a URL.
  * @param {string} name
  */
 export const getURLParams = (name) => {
@@ -170,7 +206,7 @@ export const getURLParams = (name) => {
 };
 
 /**
- * Append query string and return the value in a query string format.
+ * Appends query string and returns the value in a query string format.
  * @param {string} key
  * @param {string} value
  */
@@ -181,7 +217,7 @@ export const appendURLParams = (paramName, value) => {
 };
 
 /**
- * Caching values with expiry date to the LocalHost.
+ * Caching values with expiry date to the LocalStorage.
  * @param {string} key Local Storage Key
  * @param {any} value Local Storage Value
  * @param {number} ttl Time to live (Expiry Date in MS)
@@ -196,8 +232,9 @@ export const setLocalItem = (key, value, ttl) => {
   };
   localStorage.setItem(key, JSON.stringify(item));
 };
+
 /**
- * Getting values with expiry date from LocalHost that stored with `setLocalItem`.
+ * Getting values with expiry date from LocalStorage that stored with `setLocalItem`.
  * @param {string} key Local Storage Key
  */
 export const getLocalItem = (key) => {
@@ -219,9 +256,9 @@ export const getLocalItem = (key) => {
 };
 
 /**
- * Hide HTML element when scroll down.
- * @param {string} id the `id` of an `HTML` element
- * @param {number} distance in px ex: 100
+ * Hides an HTML element when scroll down and reveals it when scroll up.
+ * @param {string} id the `id` of an `HTML` element.
+ * @param {number} distance An integer of pixels.
  */
 export const scrollToHide = (id, distance) => {
   const distanceDown = distance;
@@ -242,51 +279,7 @@ export const scrollToHide = (id, distance) => {
   };
 };
 
-/**
- * Getting an Array of Times + "AM" or "PM".
- * @param {number} minutesInterval
- * @param {number} startTime
- */
-export const getTimes = (minutesInterval = 15, startTime = 60) => {
-  const times = []; // time array
-  const x = minutesInterval; // minutes interval
-  let tt = startTime; // start time
-  const ap = ["AM", "PM"]; // AM-PM
-
-  // loop to increment the time and push results in array
-  for (let i = 0; tt < 24 * 60; i += 1) {
-    const hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
-    const mm = tt % 60; // getting minutes of the hour in 0-55 format
-    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(
-      -2
-    )} ${ap[Math.floor(hh / 12)]}`; // pushing data in array in [00:00 - 12:00 AM/PM format]
-    tt += x;
-  }
-  return times;
-};
-
-/**
- * Logging formatted strings.
- * @param {any} input
- */
-export const logFormattedStrings = (input) =>
-  console.log(JSON.stringify(input, null, 4));
-
-/**
- * Convert Objects to Form Data Format.
- * @param {object} obj
- */
-export const toFormData = (obj) => {
-  const formBody = new FormData();
-  Object.keys(obj).forEach((key) => {
-    if (Array.isArray(obj[key])) {
-      obj[key].forEach((val, i) => {
-        formBody.append(`${key}[${i}]`, val);
-      });
-    } else formBody.append(key, obj[key]);
-  });
-  return formBody;
-};
+// =============================== Forms =========================== //
 
 /**
  * Prevent input from typing certain keyboard chars passed as an array of chars.
