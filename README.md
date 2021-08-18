@@ -1,3 +1,23 @@
+- [Description](#description)
+- [Installation](#installation)
+  - [Strings](#strings)
+  - [Numbers](#numbers)
+  - [Arrays](#arrays)
+  - [Objects](#objects)
+  - [HTML](#html)
+  - [Window](#window)
+  - [Forms](#forms)
+
+# Description
+
+Native JavaScript Functions.
+
+# Installation
+
+```
+npm i javascript-functions
+```
+
 ## Strings
 
 ```js
