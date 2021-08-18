@@ -1,5 +1,6 @@
 - [Description](#description)
 - [Installation](#installation)
+- [Usage](#usage)
   - [Strings](#strings)
   - [Numbers](#numbers)
   - [Arrays](#arrays)
@@ -16,6 +17,26 @@ Native JavaScript Functions.
 
 ```
 npm i javascript-functions
+
+```
+
+# Usage
+
+**node.js**
+
+```js
+const jsf = require("javascript-functions");
+console.log(jsf.capitalize("cat")); // Cat
+```
+
+**ES6**
+
+```js
+import * as jsf = from "javascript-functions";
+// OR
+import { capitalize } from "javascript-functions";
+
+console.log(jsf.capitalize("cat")); // Cat
 ```
 
 ## Strings
