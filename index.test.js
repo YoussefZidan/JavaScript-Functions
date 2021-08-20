@@ -1,4 +1,4 @@
-import * as jsf from "./script";
+import * as jsf from "./index";
 
 describe("randomNumber()", () => {
   it("should return a random number between min and max", () => {

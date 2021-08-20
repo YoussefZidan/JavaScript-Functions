@@ -5,13 +5,34 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Strings](#strings)
-  - [Numbers](#numbers)
-  - [Arrays](#arrays)
-  - [Objects](#objects)
-  - [HTML](#html)
-  - [Window](#window)
-  - [Forms](#forms)
+- [Strings](#strings)
+  - [capitalize()](#capitalize)
+  - [truncate()](#truncate)
+  - [toggleStrNum()](#togglestrnum)
+  - [replaceCamelCaseWithSpaces()](#replacecamelcasewithspaces)
+  - [logFormattedStrings()](#logformattedstrings)
+- [Numbers](#numbers)
+  - [randomNumber()](#randomnumber)
+  - [humanFileSize()](#humanfilesize)
+  - [formatNumber()](#formatnumber)
+- [Arrays](#arrays)
+  - [containsAll()](#containsall)
+  - [getUniqueObjs()](#getuniqueobjs)
+- [Time](#time)
+  - [getTimes()](#gettimes)
+- [Objects](#objects)
+  - [toFormData()](#toformdata)
+  - [softClone()](#softclone)
+- [HTML](#html)
+  - [getInnerHTML()](#getinnerhtml)
+- [Forms](#forms)
+  - [preventChars()](#preventchars)
+- [Window](#window)
+  - [getURLParams()](#geturlparams)
+  - [appendURLParams()](#appendurlparams)
+  - [setLocalItem()](#setlocalitem)
+  - [getLocalItem()](#getlocalitem)
+  - [scrollToHide()](#scrolltohide)
 
 # Description
 
@@ -30,7 +51,7 @@ npm i javascript-functions
 
 ```js
 const jsf = require("javascript-functions");
-console.log(jsf.capitalize("cat")); // Cat
+jsf.capitalize("cat"); // Cat
 ```
 
 **ES6**
@@ -40,10 +61,14 @@ import * as jsf = from "javascript-functions";
 // OR
 import { capitalize } from "javascript-functions";
 
-console.log(jsf.capitalize("cat")); // Cat
+jsf.capitalize("cat"); // Cat
 ```
 
-## Strings
+<hr />
+
+# Strings
+
+## capitalize()
 
 ```js
 /**
@@ -54,7 +79,17 @@ const capitalize = (s) => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
+```
 
+**usage**
+
+```js
+capitalize("cat"); // Cat
+```
+
+## truncate()
+
+```js
 /**
  * Returns a truncated string.
  * @param {string} text String to be truncated.
@@ -66,7 +101,18 @@ const truncate = (text, num = 10) => {
   }
   return text;
 };
+```
 
+**Usage**
+
+```js
+truncate("this is some long string to be truncated");
+// this is...
+```
+
+## toggleStrNum()
+
+```js
 /**
  * Returns toggled '1' or '0'.
  * @param {string} strNum String number "0" or "1".
@@ -75,7 +121,17 @@ const toggleStrNum = (strNum) => {
   if (strNum === "0" || strNum === "1") return strNum === "0" ? "1" : "0";
   return null;
 };
+```
 
+**Usage**
+
+```js
+toggleStrNum("1"); // "0"
+```
+
+## replaceCamelCaseWithSpaces()
+
+```js
 /**
  * Converts CamelCase string into string with spaces
  * @param {string} str CamelCase string
@@ -83,16 +139,40 @@ const toggleStrNum = (strNum) => {
  */
 const replaceCamelCaseWithSpaces = (str) =>
   str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+```
 
+**Usage**
+
+```js
+replaceCamelCaseWithSpaces("CamelCaseWord"); // Camel Case Word
+```
+
+## logFormattedStrings()
+
+```js
 /**
  * Logging formatted strings.
  * @param {any} input
  */
-const logFormattedStrings = (input) =>
-  console.log(JSON.stringify(input, null, 4));
+const logFormattedStrings = (input) => JSON.stringify(input, null, 4);
 ```
 
-## Numbers
+**Usage**
+
+```js
+logFormattedStrings({ fName: "John", lName: "Doe" });
+
+/*
+ {
+   "fName": "John",
+   "lName": "Doe"
+ } 
+*/
+```
+
+# Numbers
+
+## randomNumber()
 
 ```js
 /**
@@ -103,7 +183,17 @@ const logFormattedStrings = (input) =>
  */
 const randomNumber = (min = 0, max = 1000) =>
   Math.ceil(min + Math.random() * (max - min));
+```
 
+**Usage**
+
+```js
+randomNumber()); // 97
+```
+
+## humanFileSize()
+
+```js
 /**
  * Returns Converting Bytes in a Readable Human File Sizes.
  * @param {number} bytes Bytes in number.
@@ -131,7 +221,17 @@ const humanFileSize = (bytes) => {
 
   return `${BYTES.toFixed(1)} ${units[u]}`;
 };
+```
 
+**Usage**
+
+```js
+humanFileSize(456465465)); // 456.5 MB
+```
+
+## formatNumber()
+
+```js
 /**
  * Returns a formatted number with separators based on Options.
  * @param {number} num integer.
@@ -142,7 +242,19 @@ const formatNumber = (num, lang, options) =>
   num.toLocaleString(lang, { ...options });
 ```
 
-## Arrays
+**Usage**
+
+```js
+formatNumber(123456.789); // 123,456.789
+
+formatNumber(123456.789, "ar-EG"); // ١٢٣٬٤٥٦٫٧٨٩
+
+formatNumber(123456.789, "de-DE", { style: "currency", currency: "EUR" }); // "123.456,79 €"
+```
+
+# Arrays
+
+## containsAll()
 
 ```js
 /**
@@ -151,7 +263,22 @@ const formatNumber = (num, lang, options) =>
  * @param {arr} arr The other array that will be compared with.
  */
 const containsAll = (baseArr, arr) => arr.every((ele) => baseArr.includes(ele));
+```
 
+**Usage**
+
+```js
+const arr1 = ["1", "2", "3"];
+const arr2 = ["1", "2", "3", "X"];
+
+containsAll(arr1, arr2); // false
+
+containsAll(arr2, arr1); // true
+```
+
+## getUniqueObjs()
+
+```js
 /**
  * Returns a unique array of objects based on a key.
  * @param {array} array Array of objects.
@@ -168,32 +295,99 @@ const getUniqueObjs = (array, key = "id") => {
   });
   return output;
 };
+```
 
+**Usage**
+
+```js
+const arr = [
+  { id: 1, val: "One" },
+  { id: 2, val: "Two" },
+  { id: 3, val: "Three" },
+  { id: 3, val: "Three" },
+  { id: 3, val: "Three" },
+  { id: 3, val: "Three" },
+];
+
+getUniqueObjs(arr);
+
+/*
+  { id: 1, val: "One" },
+  { id: 2, val: "Two" },
+  { id: 3, val: "Three" },  
+*/
+```
+
+# Time
+
+## getTimes()
+
+```js
 /**
  * Getting an Array of Times + "AM" or "PM".
+ * @param {number} startTime Starting hour [in minutes].
  * @param {number} minutesInterval every *n* minutes [default = 15].
- * @param {number} startTime Starting hour.
  */
-const getTimes = (minutesInterval = 15, startTime = 60) => {
+const getTimes = (startTime = 0, minutesInterval = 15) => {
   const times = []; // time array
   const x = minutesInterval; // minutes interval
   let tt = startTime; // start time
   const ap = ["AM", "PM"]; // AM-PM
 
+  const formatHrs = (hh) => {
+    const _12Format = hh === 12 ? 12 : hh % 12;
+    return _12Format === 0 ? 12 : _12Format;
+  };
+
   // loop to increment the time and push results in array
   for (let i = 0; tt < 24 * 60; i += 1) {
     const hh = Math.floor(tt / 60); // getting hours of day in 0-24 format
     const mm = tt % 60; // getting minutes of the hour in 0-55 format
-    times[i] = `${`${hh === 12 ? 12 : hh % 12}`.slice(-2)}:${`0${mm}`.slice(
-      -2
-    )} ${ap[Math.floor(hh / 12)]}`;
+
+    const hours = `0${formatHrs(hh)}`.slice(-2);
+    const minutes = `0${mm}`.slice(-2);
+    const AMPM = ap[Math.floor(hh / 12)];
+
+    times[i] = `${hours}:${minutes} ${AMPM}`; // pushing data in array in [00:00 - 12:00 AM/PM format]
     tt += x;
   }
   return times;
 };
 ```
 
-## Objects
+**Usage**
+
+```js
+getTimes();
+/*
+  0: "12:00 AM"
+  1: "12:15 AM"
+  2: "12:30 AM"
+  3: "12:45 AM"
+// ...
+*/
+getTimes(120);
+/*
+  0: "02:00 AM"
+  1: "02:15 AM"
+  2: "02:30 AM"
+  3: "02:45 AM"
+// ...
+*/
+getTimes(0, 30);
+
+/*
+  0: "12:00 AM"
+  1: "12:30 AM"
+  2: "01:00 AM"
+  3: "01:30 AM"
+  // ...
+*/
+```
+
+# Objects
+
+## toFormData()
 
 ```js
 /**
@@ -211,15 +405,55 @@ const toFormData = (obj) => {
   });
   return formBody;
 };
-
-/**
- * Soft Deep cloning inputs
- * @param {any} input Input
- */
-const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
 ```
 
-## HTML
+**Usage**
+
+```js
+const formData = toFormData({
+  name: "x",
+  arr: ["a", "b", "c"],
+  nested: { val: "nested value" },
+});
+for (var pair of formData.entries()) {
+  console.log(pair[0] + ", " + pair[1]);
+}
+/*
+  name, x
+  arr[0], a
+  arr[1], b
+  arr[2], c
+  nested, [object Object]
+*/
+```
+
+## softClone()
+
+```js
+/**
+ * Soft  cloning objects
+ * @param {object} obj Input
+ */
+const softClone = (obj) => JSON.parse(JSON.stringify(obj));
+```
+
+**Usage**
+
+```js
+const obj = { name: "a", nested: { val: "nested val" } };
+const clone = softClone(obj);
+obj.name = "XXX";
+
+console.log(obj);
+// {name: "XXX", nested: { val: "nested val" }}
+
+console.log(clone);
+// {name: "a", nested: { val: "nested val" }}
+```
+
+# HTML
+
+## getInnerHTML()
 
 ```js
 /**
@@ -229,7 +463,54 @@ const softDeepClone = (input) => JSON.parse(JSON.stringify(input));
 const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
 ```
 
-## Window
+**Usage**
+
+```js
+getInnerHTML("<h1>HI</h1>"); // HI
+
+getInnerHTML(`
+    <p>
+      <h1>HI</h1>
+    </p>
+    `); // HI
+
+getInnerHTML(`
+    <p>
+      <h1>
+        <span>HI</span>
+      </h1>
+    </p>
+    `); // HI
+```
+
+# Forms
+
+## preventChars()
+
+```js
+/**
+ * Prevent input from typing certain keyboard chars passed as an array of chars.
+ * @param {event} event input event
+ * @param {Array<string>} charArr array of chars
+ */
+const preventChars = (event, charArr) =>
+  charArr.includes(event.key) && event.preventDefault();
+```
+
+**Usage**
+
+```jsx
+// html
+<input type="number" id="inp">
+
+// js
+document.getElementById('inp').addEventListener('keydown', e => {
+  const arr = ['e', 'E', '+', '-'];
+  preventChars(e, arr);
+});
+```
+
+# Window
 
 ```js
 /**
@@ -244,14 +525,20 @@ const getScreenWidth = () => {
   if (screenWidth <= 2560) return "HD";
   return screenWidth;
 };
+```
 
+```js
 /**
  * Scroll to top
  */
 const toTop = (behavior = "smooth") => {
   window.scroll({ top: 0, left: 0, behavior });
 };
+```
 
+## getURLParams()
+
+```js
 /**
  * Returns param name from a URL.
  * @param {string} name
@@ -259,7 +546,11 @@ const toTop = (behavior = "smooth") => {
 const getURLParams = (name) => {
   return new URLSearchParams(window.location.search).get(name);
 };
+```
 
+## appendURLParams()
+
+```js
 /**
  * Appends query string and returns the value in a query string format.
  * @param {string} key
@@ -270,7 +561,11 @@ const appendURLParams = (paramName, value) => {
   searchParams.set(paramName, value);
   return searchParams.toString();
 };
+```
 
+## setLocalItem()
+
+```js
 /**
  * Caching values with expiry date to the LocalStorage.
  * @param {string} key Local Storage Key
@@ -287,7 +582,11 @@ const setLocalItem = (key, value, ttl) => {
   };
   localStorage.setItem(key, JSON.stringify(item));
 };
+```
 
+## getLocalItem()
+
+```js
 /**
  * Getting values with expiry date from LocalStorage that stored with `setLocalItem`.
  * @param {string} key Local Storage Key
@@ -309,7 +608,11 @@ const getLocalItem = (key) => {
   }
   return item.value;
 };
+```
 
+## scrollToHide()
+
+```js
 /**
  * Hides an HTML element when scroll down and reveals it when scroll up.
  * @param {string} id the `id` of an `HTML` element.
@@ -333,16 +636,4 @@ const scrollToHide = (id, distance) => {
     prevScrollpos = currentScrollPos;
   };
 };
-```
-
-## Forms
-
-```js
-/**
- * Prevent input from typing certain keyboard chars passed as an array of chars.
- * @param {event} event input event
- * @param {Array<string>} charArr array of chars
- */
-const preventChars = (event, charArr) =>
-  charArr.includes(event.key) && event.preventDefault();
 ```
