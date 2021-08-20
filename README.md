@@ -28,24 +28,26 @@
 - [Forms](#forms)
   - [preventChars()](#preventchars)
 - [Window](#window)
+  - [getScreenWidth()](#getscreenwidth)
+  - [toTop()](#totop)
   - [getURLParams()](#geturlparams)
   - [appendURLParams()](#appendurlparams)
   - [setLocalItem()](#setlocalitem)
   - [getLocalItem()](#getlocalitem)
   - [scrollToHide()](#scrolltohide)
 
-# Description
+## Description
 
 Native JavaScript Reusable Functions.
 
-# Installation
+## Installation
 
 ```
 npm i javascript-functions
 
 ```
 
-# Usage
+## Usage
 
 **node.js**
 
@@ -66,9 +68,9 @@ jsf.capitalize("cat"); // Cat
 
 <hr />
 
-# Strings
+## Strings
 
-## capitalize()
+### capitalize()
 
 ```js
 /**
@@ -87,7 +89,7 @@ const capitalize = (s) => {
 capitalize("cat"); // Cat
 ```
 
-## truncate()
+### truncate()
 
 ```js
 /**
@@ -110,7 +112,7 @@ truncate("this is some long string to be truncated");
 // this is...
 ```
 
-## toggleStrNum()
+### toggleStrNum()
 
 ```js
 /**
@@ -129,7 +131,7 @@ const toggleStrNum = (strNum) => {
 toggleStrNum("1"); // "0"
 ```
 
-## replaceCamelCaseWithSpaces()
+### replaceCamelCaseWithSpaces()
 
 ```js
 /**
@@ -147,7 +149,7 @@ const replaceCamelCaseWithSpaces = (str) =>
 replaceCamelCaseWithSpaces("CamelCaseWord"); // Camel Case Word
 ```
 
-## logFormattedStrings()
+### logFormattedStrings()
 
 ```js
 /**
@@ -170,9 +172,9 @@ logFormattedStrings({ fName: "John", lName: "Doe" });
 */
 ```
 
-# Numbers
+## Numbers
 
-## randomNumber()
+### randomNumber()
 
 ```js
 /**
@@ -191,7 +193,7 @@ const randomNumber = (min = 0, max = 1000) =>
 randomNumber()); // 97
 ```
 
-## humanFileSize()
+### humanFileSize()
 
 ```js
 /**
@@ -229,7 +231,7 @@ const humanFileSize = (bytes) => {
 humanFileSize(456465465)); // 456.5 MB
 ```
 
-## formatNumber()
+### formatNumber()
 
 ```js
 /**
@@ -252,9 +254,9 @@ formatNumber(123456.789, "ar-EG"); // ١٢٣٬٤٥٦٫٧٨٩
 formatNumber(123456.789, "de-DE", { style: "currency", currency: "EUR" }); // "123.456,79 €"
 ```
 
-# Arrays
+## Arrays
 
-## containsAll()
+### containsAll()
 
 ```js
 /**
@@ -276,7 +278,7 @@ containsAll(arr1, arr2); // false
 containsAll(arr2, arr1); // true
 ```
 
-## getUniqueObjs()
+### getUniqueObjs()
 
 ```js
 /**
@@ -318,9 +320,9 @@ getUniqueObjs(arr);
 */
 ```
 
-# Time
+## Time
 
-## getTimes()
+### getTimes()
 
 ```js
 /**
@@ -385,9 +387,9 @@ getTimes(0, 30);
 */
 ```
 
-# Objects
+## Objects
 
-## toFormData()
+### toFormData()
 
 ```js
 /**
@@ -427,7 +429,7 @@ for (var pair of formData.entries()) {
 */
 ```
 
-## softClone()
+### softClone()
 
 ```js
 /**
@@ -451,9 +453,9 @@ console.log(clone);
 // {name: "a", nested: { val: "nested val" }}
 ```
 
-# HTML
+## HTML
 
-## getInnerHTML()
+### getInnerHTML()
 
 ```js
 /**
@@ -483,9 +485,9 @@ getInnerHTML(`
     `); // HI
 ```
 
-# Forms
+## Forms
 
-## preventChars()
+### preventChars()
 
 ```js
 /**
@@ -510,7 +512,9 @@ document.getElementById('inp').addEventListener('keydown', e => {
 });
 ```
 
-# Window
+## Window
+
+### getScreenWidth()
 
 ```js
 /**
@@ -527,6 +531,8 @@ const getScreenWidth = () => {
 };
 ```
 
+### toTop()
+
 ```js
 /**
  * Scroll to top
@@ -536,7 +542,7 @@ const toTop = (behavior = "smooth") => {
 };
 ```
 
-## getURLParams()
+### getURLParams()
 
 ```js
 /**
@@ -548,7 +554,7 @@ const getURLParams = (name) => {
 };
 ```
 
-## appendURLParams()
+### appendURLParams()
 
 ```js
 /**
@@ -563,7 +569,7 @@ const appendURLParams = (paramName, value) => {
 };
 ```
 
-## setLocalItem()
+### setLocalItem()
 
 ```js
 /**
@@ -584,7 +590,7 @@ const setLocalItem = (key, value, ttl) => {
 };
 ```
 
-## getLocalItem()
+### getLocalItem()
 
 ```js
 /**
@@ -610,7 +616,7 @@ const getLocalItem = (key) => {
 };
 ```
 
-## scrollToHide()
+### scrollToHide()
 
 ```js
 /**
