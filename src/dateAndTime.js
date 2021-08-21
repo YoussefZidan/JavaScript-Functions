@@ -49,18 +49,20 @@ const tomorrow = () => {
   day.setDate(day.getDate() + 1);
   return day;
 };
+
 /**
  * Converts date into time stamp formate.
  * @param {Date} date date
- * @returns {Date} In time stamp formate.
+ * @returns {Number} In time stamp formate.
  */
 const toTimeStamp = (date) => {
   return new Date(date).getTime();
 };
+
 /**
  * Converts date into UTC timezone.
  * @param {Date} date date
- * @returns {Date} In UTC timezone.
+ * @returns {String} In UTC timezone.
  */
 const toUTC = (date) => {
   return new Date(date).toGMTString();

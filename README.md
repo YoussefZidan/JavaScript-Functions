@@ -18,8 +18,14 @@
 - [Arrays](#arrays)
   - [containsAll()](#containsall)
   - [getUniqueObjs()](#getuniqueobjs)
-- [Time](#time)
+- [Date & Time](#date--time)
   - [getTimes()](#gettimes)
+  - [today()](#today)
+  - [tomorrow()](#tomorrow)
+  - [toTimeStamp()](#totimestamp)
+  - [toUTC()](#toutc)
+  - [humanFriendlyDate()](#humanfriendlydate)
+  - [humanFriendlyTime()](#humanfriendlytime)
 - [Objects](#objects)
   - [toFormData()](#toformdata)
   - [softClone()](#softclone)
@@ -320,7 +326,7 @@ getUniqueObjs(arr);
 */
 ```
 
-## Time
+## Date & Time
 
 ### getTimes()
 
@@ -329,6 +335,7 @@ getUniqueObjs(arr);
  * Getting an Array of Times + "AM" or "PM".
  * @param {number} startTime Starting hour [in minutes].
  * @param {number} minutesInterval every *n* minutes [default = 15].
+ * @returns {Array} Array of time.
  */
 const getTimes = (startTime = 0, minutesInterval = 15) => {
   const times = []; // time array
@@ -385,6 +392,130 @@ getTimes(0, 30);
   3: "01:30 AM"
   // ...
 */
+```
+
+### today()
+
+```js
+/**
+ * Returns Today's date.
+ * @returns {Date} Today's date.
+ */
+const today = () => {
+  return new Date();
+};
+```
+
+### tomorrow()
+
+```js
+/**
+ * Returns Tomorrow's date
+ * @returns {Date} Tomorrow's date
+ */
+const tomorrow = () => {
+  const day = new Date();
+  day.setDate(day.getDate() + 1);
+  return day;
+};
+```
+
+### toTimeStamp()
+
+```js
+/**
+ * Converts date into time stamp formate.
+ * @param {Date} date date
+ * @returns {Number} In time stamp formate.
+ */
+const toTimeStamp = (date) => {
+  return new Date(date).getTime();
+};
+```
+
+**Usage**
+
+```js
+toTimeStamp(new Date()); // 1629542075973
+```
+
+### toUTC()
+
+```js
+/**
+ * Converts date into UTC timezone.
+ * @param {Date} date date
+ * @returns {String} In UTC timezone.
+ */
+const toUTC = (date) => {
+  return new Date(date).toGMTString();
+};
+```
+
+**Usage**
+
+```js
+toUTC(new Date()); // Sat, 21 Aug 2021 10:34:35 GMT
+
+toUTC(1629542075973); // Sat, 21 Aug 2021 10:34:35 GMT
+```
+
+### humanFriendlyDate()
+
+```js
+/**
+ * Converts Date into Human readable date string.
+ * @param {Date} date [default new Date()].
+ * @param {String} locales [default "en-Us"].
+ * @param {Object} options Formatting options.
+ * @param {String} options.weekday
+ * @param {String} options.year
+ * @param {String} options.month
+ * @param {String} options.day
+ * @returns {String} Human readable date.
+ */
+const humanFriendlyDate = (date = new Date(), locales = "en-US", options) => {
+  const O = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    ...options,
+  };
+  return date.toLocaleDateString(locales, O);
+};
+```
+
+**Usage**
+
+```js
+humanFriendlyDate(new Date()); // Sat, Aug 21, 2021
+
+humanFriendlyDate(new Date(), "ar-EG"); // السبت، ٢١ أغسطس ٢٠٢١
+
+humanFriendlyDate(new Date(), "en-US", { weekday: "long", month: "long" }); // Saturday, August 21, 2021
+```
+
+### humanFriendlyTime()
+
+```js
+/**
+ * Converts Date into Human readable time string.
+ * @param {Date} date [default new Date()].
+ * @param {String} locales [default "en-Us"].
+ * @returns {String} Human readable date.
+ */
+const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
+  return date.toLocaleTimeString(locales);
+};
+```
+
+**Usage**
+
+```js
+humanFriendlyTime(new Date()); // 12:42:53 PM
+
+humanFriendlyTime(new Date(), "ar-EG"); // ١٢:٤٣:٣٩ م
 ```
 
 ## Objects
@@ -494,6 +625,7 @@ getInnerHTML(`
  * Prevent input from typing certain keyboard chars passed as an array of chars.
  * @param {event} event input event
  * @param {Array<string>} charArr array of chars
+ * @returns {boolean} boolean
  */
 const preventChars = (event, charArr) =>
   charArr.includes(event.key) && event.preventDefault();
