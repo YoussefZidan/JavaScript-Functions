@@ -1,11 +1,11 @@
-import * as strings from "./src/strings";
-import * as numbers from "./src/numbers";
-import * as arrays from "./src/arrays";
-import * as dateAndTime from "./src/dateAndTime";
-import * as objects from "./src/objects";
-import * as html from "./src/html";
-import * as forms from "./src/forms";
-import * as window from "./src/window";
+const strings = require("./src/strings");
+const numbers = require("./src/numbers");
+const arrays = require("./src/arrays");
+const dateAndTime = require("./src/dateAndTime");
+const objects = require("./src/objects");
+const html = require("./src/html");
+const forms = require("./src/forms");
+const window = require("./src/window");
 
 module.exports = {
   ...strings,

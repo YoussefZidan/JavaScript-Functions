@@ -1,4 +1,4 @@
-import * as jsf from "./arrays";
+const jsf = require("./arrays");
 
 describe("containsAll()", () => {
   it("should return TRUE", () => {

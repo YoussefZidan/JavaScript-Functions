@@ -1,4 +1,4 @@
-import * as jsf from "./objects";
+const jsf= require( "./objects");
 
 describe("getUniqueObjs()", () => {
   it("returns a unique array of objects", () => {

@@ -1,4 +1,4 @@
-import * as jsf from "./html";
+const jsf = require("./html");
 
 describe("getInnerHTML()", () => {
   it("should return HI", () => {

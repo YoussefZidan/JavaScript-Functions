@@ -1,4 +1,4 @@
-import * as jsf from "./window";
+const jsf = require("./window");
 
 describe("getScreenWidth()", () => {
   it("returns a string representing the width of the screen", () => {
