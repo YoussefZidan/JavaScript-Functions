@@ -12,6 +12,7 @@
   - [camelCaseToSpaces()](#camelcasetospaces)
   - [logFormattedStrings()](#logformattedstrings)
   - [randomId()](#randomid)
+  - [getInnerHTML()](#getinnerhtml)
 - [Numbers](#numbers)
   - [randomNumber()](#randomnumber)
   - [humanFileSize()](#humanfilesize)
@@ -30,8 +31,6 @@
 - [Objects](#objects)
   - [toFormData()](#toformdata)
   - [softClone()](#softclone)
-- [HTML](#html)
-  - [getInnerHTML()](#getinnerhtml)
 - [Forms](#forms)
   - [preventChars()](#preventchars)
 - [Window](#window)
@@ -42,6 +41,8 @@
   - [setLocalItem()](#setlocalitem)
   - [getLocalItem()](#getlocalitem)
   - [scrollToHide()](#scrolltohide)
+  - [pxToRem()](#pxtorem)
+  - [remToPx()](#remtopx)
 
 ## Description
 
@@ -194,6 +195,16 @@ const randomId = () => {
 
 ```js
 randomId(); // kw3npdsaw22i8ghr2i
+```
+
+### getInnerHTML()
+
+```js
+/**
+ * Getting the inner `Text` of an `HTML` string.
+ * @param {string} str A string of HTML.
+ */
+const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
 ```
 
 ## Numbers
@@ -602,18 +613,6 @@ console.log(clone);
 // {name: "a", nested: { val: "nested val" }}
 ```
 
-## HTML
-
-### getInnerHTML()
-
-```js
-/**
- * Getting the inner `Text` of an `HTML` string.
- * @param {string} str A string of HTML.
- */
-const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
-```
-
 **Usage**
 
 ```js
@@ -792,4 +791,46 @@ const scrollToHide = (id, distance) => {
     prevScrollpos = currentScrollPos;
   };
 };
+```
+
+### pxToRem()
+
+```js
+/**
+ * Converts Pixels into Rem based on the root <html /> tag.
+ * @param {number} px Pixels
+ * @returns {number}
+ */
+const pxToRem = (px) => {
+  return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
+};
+```
+
+**Usage**
+
+```js
+// In case <html /> base font size is '16px'
+
+pxToRem(32); // 2
+```
+
+### remToPx()
+
+```js
+/**
+ * Converts Rems into Pixels based on the root <html /> tag.
+ * @param {number} rem Rem
+ * @returns {number}
+ */
+const remToPx = (rem) => {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+};
+```
+
+**Usage**
+
+```js
+// In case <html /> base font size is '16px'
+
+remToPx(2); // 32
 ```

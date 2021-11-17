@@ -49,7 +49,7 @@ const logFormattedStrings = (input) =>
  * Generates and returns a random ID
  * @returns {string}
  */
-const randomId = () => {
+ const randomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 

@@ -4,7 +4,7 @@
  * Detect screen width and returns a string representing the width of the screen.
  */
 const getScreenWidth = () => {
-  const screenWidth = window.screen.width;
+  const screenWidth = window.outerWidth;
   if (screenWidth <= 425) return "mobile";
   if (screenWidth <= 768) return "tablet";
   if (screenWidth <= 1024) return "laptopSm";
@@ -102,6 +102,24 @@ const scrollToHide = (id, distance) => {
   };
 };
 
+/**
+ * Converts Pixels into Rem based on the root <html /> tag.
+ * @param {number} px Pixels
+ * @returns {number}
+ */
+const pxToRem = (px) => {
+  return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
+};
+
+/**
+ * Converts Rems into Pixels based on the root <html /> tag.
+ * @param {number} rem Rem
+ * @returns {number}
+ */
+const remToPx = (rem) => {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+};
+
 module.exports = {
   getScreenWidth,
   toTop,
@@ -110,4 +128,6 @@ module.exports = {
   setLocalItem,
   getLocalItem,
   scrollToHide,
+  pxToRem,
+  remToPx,
 };
