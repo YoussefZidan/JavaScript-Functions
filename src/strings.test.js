@@ -25,9 +25,9 @@ describe("toggleStrNum()", () => {
   });
 });
 
-describe("replaceCamelCaseWithSpaces()", () => {
+describe("camelCaseToSpaces()", () => {
   it("Converts CamelCase string into string with spaces", () => {
-    expect(jsf.replaceCamelCaseWithSpaces("ACamelCaseString")).toEqual(
+    expect(jsf.camelCaseToSpaces("ACamelCaseString")).toEqual(
       "A Camel Case String"
     );
   });

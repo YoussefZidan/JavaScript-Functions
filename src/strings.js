@@ -35,7 +35,7 @@ const toggleStrNum = (strNum) => {
  * @param {string} str CamelCase string
  * @returns {string}
  */
-const replaceCamelCaseWithSpaces = (str) =>
+const camelCaseToSpaces = (str) =>
   str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
 
 /**
@@ -57,7 +57,7 @@ module.exports = {
   capitalize,
   truncate,
   toggleStrNum,
-  replaceCamelCaseWithSpaces,
+  camelCaseToSpaces,
   logFormattedStrings,
   randomId,
 };
