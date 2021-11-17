@@ -11,8 +11,8 @@
   - [toggleStrNum()](#togglestrnum)
   - [camelCaseToSpaces()](#camelcasetospaces)
   - [logFormattedStrings()](#logformattedstrings)
-  - [randomId()](#randomid)
   - [getInnerHTML()](#getinnerhtml)
+  - [randomId()](#randomid)
 - [Numbers](#numbers)
   - [randomNumber()](#randomnumber)
   - [humanFileSize()](#humanfilesize)
@@ -179,6 +179,17 @@ logFormattedStrings({ fName: "John", lName: "Doe" });
  } 
 */
 ```
+
+### getInnerHTML()
+
+```js
+/**
+ * Getting the inner `Text` of an `HTML` string.
+ * @param {string} str A string of HTML.
+ */
+const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+```
+
 ### randomId()
 
 ```js
@@ -195,16 +206,6 @@ const randomId = () => {
 
 ```js
 randomId(); // kw3npdsaw22i8ghr2i
-```
-
-### getInnerHTML()
-
-```js
-/**
- * Getting the inner `Text` of an `HTML` string.
- * @param {string} str A string of HTML.
- */
-const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
 ```
 
 ## Numbers
