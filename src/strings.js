@@ -45,10 +45,19 @@ const replaceCamelCaseWithSpaces = (str) =>
 const logFormattedStrings = (input) =>
   console.log(JSON.stringify(input, null, 4));
 
+/**
+ * Generates and returns a random ID
+ * @returns {string}
+ */
+const randomId = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+};
+
 module.exports = {
   capitalize,
   truncate,
   toggleStrNum,
   replaceCamelCaseWithSpaces,
   logFormattedStrings,
+  randomId,
 };
