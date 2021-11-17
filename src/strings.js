@@ -46,10 +46,16 @@ const logFormattedStrings = (input) =>
   console.log(JSON.stringify(input, null, 4));
 
 /**
+ * Getting the inner `Text` of an `HTML` string.
+ * @param {string} str A string of HTML.
+ */
+const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+
+/**
  * Generates and returns a random ID
  * @returns {string}
  */
- const randomId = () => {
+const randomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
@@ -59,5 +65,6 @@ module.exports = {
   toggleStrNum,
   camelCaseToSpaces,
   logFormattedStrings,
+  getInnerHTML,
   randomId,
 };
