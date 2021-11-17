@@ -9,8 +9,9 @@
   - [capitalize()](#capitalize)
   - [truncate()](#truncate)
   - [toggleStrNum()](#togglestrnum)
-  - [replaceCamelCaseWithSpaces()](#replacecamelcasewithspaces)
+  - [camelCaseToSpaces()](#camelcasetospaces)
   - [logFormattedStrings()](#logformattedstrings)
+  - [randomId()](#randomid)
 - [Numbers](#numbers)
   - [randomNumber()](#randomnumber)
   - [humanFileSize()](#humanfilesize)
@@ -137,7 +138,7 @@ const toggleStrNum = (strNum) => {
 toggleStrNum("1"); // "0"
 ```
 
-### replaceCamelCaseWithSpaces()
+### camelCaseToSpaces()
 
 ```js
 /**
@@ -145,14 +146,14 @@ toggleStrNum("1"); // "0"
  * @param {string} str CamelCase string
  * @returns {string}
  */
-const replaceCamelCaseWithSpaces = (str) =>
+const camelCaseToSpaces = (str) =>
   str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
 ```
 
 **Usage**
 
 ```js
-replaceCamelCaseWithSpaces("CamelCaseWord"); // Camel Case Word
+camelCaseToSpaces("CamelCaseWord"); // Camel Case Word
 ```
 
 ### logFormattedStrings()
@@ -176,6 +177,23 @@ logFormattedStrings({ fName: "John", lName: "Doe" });
    "lName": "Doe"
  } 
 */
+```
+### randomId()
+
+```js
+/**
+ * Generates and returns a random ID
+ * @returns {string}
+ */
+const randomId = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+};
+```
+
+**Usage**
+
+```js
+randomId(); // kw3npdsaw22i8ghr2i
 ```
 
 ## Numbers
