@@ -53,7 +53,7 @@ const tomorrow = () => {
 /**
  * Converts date into time stamp formate.
  * @param {Date} date date
- * @returns {Number} In time stamp formate.
+ * @returns {Number} In time stamp formate in milliseconds.
  */
 const toTimeStamp = (date) => {
   return new Date(date).getTime();
