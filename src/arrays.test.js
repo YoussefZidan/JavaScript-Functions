@@ -31,3 +31,23 @@ describe("containsAll()", () => {
     expect(jsf.containsAll(baseArr, arr)).not.toBeTruthy();
   });
 });
+
+describe("toggleArrayValue()", () => {
+  it("Should Remove 1", () => {
+    let array = ["1", "2", "3"];
+    let value = "1";
+    expect(jsf.toggleArrayValue(array, value)).toEqual(["2", "3"]);
+  });
+
+  it("Should remove 3", () => {
+    let array = ["1", "2", "3"];
+    let value = "3";
+    expect(jsf.toggleArrayValue(array, value)).toEqual(["1", "2"]);
+  });
+
+  it("Should add XXX", () => {
+    let array = ["1", "2", "3"];
+    let value = "XXX";
+    expect(jsf.toggleArrayValue(array, value)).toEqual(["1", "2", "3", "XXX"]);
+  });
+});
