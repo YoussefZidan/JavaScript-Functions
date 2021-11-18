@@ -100,15 +100,6 @@ const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
   return date.toLocaleTimeString(locales);
 };
 
-/**
- * Converts date into Unix Timestamp formate.
- * @param {Date} date date
- * @returns {Number} In unix timestamp formate.
- */
-const toUnixTimeStamp = (date = new Date()) => {
-  return Math.floor(toTimeStamp(date) / 1000);
-};
-
 module.exports = {
   getTimes,
   today,
@@ -117,5 +108,4 @@ module.exports = {
   toUTC,
   humanFriendlyDate,
   humanFriendlyTime,
-  toUnixTimeStamp,
 };
