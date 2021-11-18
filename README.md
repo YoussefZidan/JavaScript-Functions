@@ -19,12 +19,14 @@
   - [formatNumber()](#formatnumber)
 - [Arrays](#arrays)
   - [containsAll()](#containsall)
+  - [toggleArrayValue()](#togglearrayvalue)
   - [getUniqueObjs()](#getuniqueobjs)
 - [Date & Time](#date--time)
   - [getTimes()](#gettimes)
   - [today()](#today)
   - [tomorrow()](#tomorrow)
   - [toTimeStamp()](#totimestamp)
+  - [toUnixTimeStamp()](#tounixtimestamp)
   - [toUTC()](#toutc)
   - [humanFriendlyDate()](#humanfriendlydate)
   - [humanFriendlyTime()](#humanfriendlytime)
@@ -314,6 +316,45 @@ containsAll(arr1, arr2); // false
 containsAll(arr2, arr1); // true
 ```
 
+### toggleArrayValue()
+
+```js
+/**
+ * If the value is an element of the array remove it from array
+ * Otherwise it adds the new value to the array
+ * @param {array} array The array to toggle value from.
+ * @param {value} value The value to be toggled from array.
+ * @returns {array} new array with or without the selected value
+ */
+const toggleArrayValue = (array, value) => {
+  return array.includes(value)
+    ? [...array.filter((i) => i !== value)]
+    : [...array, value];
+};
+```
+
+**Usage**
+
+```js
+// Example 1
+let array = ["1", "2", "3"];
+let value = "1";
+
+toggleArrayValue(array, value); // ["2", "3"]
+
+// Example 2
+let array = ["1", "2", "3"];
+let value = "3";
+
+toggleArrayValue(array, value); // ["1", "2"]
+
+// Example 3
+let array = ["1", "2", "3"];
+let value = "XXX";
+
+toggleArrayValue(array, value); // ["1", "2", "3", "XXX"]
+```
+
 ### getUniqueObjs()
 
 ```js
@@ -467,6 +508,25 @@ const toTimeStamp = (date) => {
 
 ```js
 toTimeStamp(new Date()); // 1629542075973
+```
+
+### toUnixTimeStamp()
+
+```js
+/**
+ * Converts date into Unix Timestamp formate.
+ * @param {Date} date date
+ * @returns {Number} In unix timestamp formate.
+ */
+const toUnixTimeStamp = (date) => {
+  return Math.floor(new Date(date).getTime() / 1000);
+};
+```
+
+**Usage**
+
+```js
+toUnixTimeStamp(new Date()); // 1637256905
 ```
 
 ### toUTC()

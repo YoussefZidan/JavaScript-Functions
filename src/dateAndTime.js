@@ -105,8 +105,8 @@ const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
  * @param {Date} date date
  * @returns {Number} In unix timestamp formate.
  */
-const toUnixTimeStamp = (date = new Date()) => {
-  return Math.floor(toTimeStamp(date) / 1000);
+const toUnixTimeStamp = (date) => {
+  return Math.floor(new Date(date).getTime() / 1000);
 };
 
 module.exports = {
