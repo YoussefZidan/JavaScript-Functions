@@ -229,7 +229,6 @@ const hashCardNum = (str, symbol = "#") => {
       .fill(symbol)
       .join("")
       .replace(/^(.{4})(.{4})(.*)$/, "$1 $2 $3");
-    console.log(hashSymbol);
     return `${hashSymbol} ` + string.slice(12);
   }
 };
