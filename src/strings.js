@@ -67,7 +67,7 @@ const randomId = () => {
  */
 const hashCardNum = (str, symbol = "#") => {
   let string = str.replace(/ /g, "");
-  if (string.length != 16) throw new Error("Card numbers must be 16 digits");
+  if (string.length != 16) throw new Error("Card number must be 16 digits");
   else {
     let hashSymbol = new Array(12)
       .fill(symbol)
