@@ -45,6 +45,7 @@
   - [scrollToHide()](#scrolltohide)
   - [pxToRem()](#pxtorem)
   - [remToPx()](#remtopx)
+  - [assert()](#assert)
 
 ## Description
 
@@ -894,4 +895,26 @@ const remToPx = (rem) => {
 // In case <html /> base font size is '16px'
 
 remToPx(2); // 32
+```
+
+### assert()
+
+```js
+/**
+ * console.assert a value and displays a message
+ */
+const assert = (val, msg = "Provided value is falsy.") => {
+  console.assert(val, msg);
+};
+```
+
+**Usage**
+
+```js
+assert(false); // Assertion failed: Provided value is falsy.
+assert(0); // Assertion failed: Provided value is falsy.
+
+assert(false, "The value is false"); // Assertion failed: The value is false.
+
+assert(true); // undefined
 ```

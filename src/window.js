@@ -120,6 +120,13 @@ const remToPx = (rem) => {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 };
 
+/**
+ * console.assert a value and displays a message
+ */
+const assert = (val, msg="Provided value is falsy") => {
+  console.assert(val, msg);
+};
+
 module.exports = {
   getScreenWidth,
   toTop,
@@ -130,4 +137,5 @@ module.exports = {
   scrollToHide,
   pxToRem,
   remToPx,
+  assert
 };
