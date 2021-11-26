@@ -13,6 +13,7 @@
   - [logFormattedStrings()](#logformattedstrings)
   - [getInnerHTML()](#getinnerhtml)
   - [randomId()](#randomid)
+  - [hashCardNum()](#hashcardnum)
 - [Numbers](#numbers)
   - [randomNumber()](#randomnumber)
   - [humanFileSize()](#humanfilesize)
@@ -209,6 +210,36 @@ const randomId = () => {
 
 ```js
 randomId(); // kw3npdsaw22i8ghr2i
+```
+
+### hashCardNum()
+
+```js
+/**
+ * Returns a hashed card number.
+ * @param {string} str 16 card numbers as a string.
+ * @param {string} symbol hash symbol.
+ * @returns hashed card number
+ */
+const hashCardNum = (str, symbol = "#") => {
+  let string = str.replace(/ /g, "");
+  if (string.length != 16) throw new Error("Visa numbers must be 16 digits");
+  else {
+    let hashSymbol = new Array(12)
+      .fill(symbol)
+      .join("")
+      .replace(/^(.{4})(.{4})(.*)$/, "$1 $2 $3");
+    console.log(hashSymbol);
+    return `${hashSymbol} ` + string.slice(12);
+  }
+};
+```
+
+**Usage**
+
+```js
+hashCardNum("1599 9874 5632 1459"); // #### #### #### 1459
+hashCardNum("1599 9874 5632 1459", "*"); // **** **** **** 1459
 ```
 
 ## Numbers

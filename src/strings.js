@@ -59,6 +59,25 @@ const randomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
+/**
+ * Returns a hashed card number.
+ * @param {string} str 16 card numbers as a string.
+ * @param {string} symbol hash symbol.
+ * @returns hashed card number
+ */
+const hashCardNum = (str, symbol = "#") => {
+  let string = str.replace(/ /g, "");
+  if (string.length != 16) throw new Error("Visa numbers must be 16 digits");
+  else {
+    let hashSymbol = new Array(12)
+      .fill(symbol)
+      .join("")
+      .replace(/^(.{4})(.{4})(.*)$/, "$1 $2 $3");
+    console.log(hashSymbol);
+    return `${hashSymbol} ` + string.slice(12);
+  }
+};
+
 module.exports = {
   capitalize,
   truncate,
@@ -67,4 +86,5 @@ module.exports = {
   logFormattedStrings,
   getInnerHTML,
   randomId,
+  hashCardNum,
 };
