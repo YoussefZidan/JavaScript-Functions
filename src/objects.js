@@ -22,7 +22,24 @@ const toFormData = (obj) => {
  */
 const softClone = (obj) => JSON.parse(JSON.stringify(obj));
 
+/**
+ * Add object keys as an item to each object 
+ * ex : const employess = 
+ * { 
+ *  Dev : { name : 'Islam' } , 
+ *  Test : { name : 'John' }
+ * }
+ * O/P => 
+ * {
+ * Dev : { name : 'Islam' , key : 'Dev'  } , 
+ * Test : { name : 'John' , key : 'Test' }
+ * }
+ * @param {object} obj Input
+ */
+const transformedObj = Object.fromEntries(Object.entries(obj).map(([objID , objInfo]) => [objID , {...objInfo , key : objID }]));
+
 module.exports = {
   toFormData,
   softClone,
+  transformedObj
 };

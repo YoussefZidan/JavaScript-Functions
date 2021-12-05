@@ -34,6 +34,7 @@
 - [Objects](#objects)
   - [toFormData()](#toformdata)
   - [softClone()](#softclone)
+  - [transformedObj()](#transformedObj)
 - [Forms](#forms)
   - [preventChars()](#preventchars)
 - [Window](#window)
@@ -690,6 +691,20 @@ for (var pair of formData.entries()) {
  */
 const softClone = (obj) => JSON.parse(JSON.stringify(obj));
 ```
+
+
+### transformedObj() 
+
+```js
+/**
+ * Add object keys as an item to each object 
+ * @param {object} obj Input
+ */
+const transformedObj = Object.fromEntries(Object.entries(obj).map(([objID , objInfo]) => 
+    [objID , {...objInfo , key : objID }]
+));
+```
+
 
 **Usage**
 
