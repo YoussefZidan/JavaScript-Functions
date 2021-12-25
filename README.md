@@ -22,6 +22,7 @@
   - [containsAll()](#containsall)
   - [toggleArrayValue()](#togglearrayvalue)
   - [getUniqueObjs()](#getuniqueobjs)
+  - [arrToObj()](#arrtoobj)
 - [Date & Time](#date--time)
   - [getTimes()](#gettimes)
   - [today()](#today)
@@ -34,6 +35,7 @@
 - [Objects](#objects)
   - [toFormData()](#toformdata)
   - [softClone()](#softclone)
+  - [objToArray()](#objtoarray)
 - [Forms](#forms)
   - [preventChars()](#preventchars)
 - [Window](#window)
@@ -428,6 +430,32 @@ getUniqueObjs(arr);
 */
 ```
 
+### arrToObj()
+
+```js
+/**
+ * Converts two dimensional array into an object.
+ * When index[0] is the `key` and index[1] ins the `value`.
+ * @param {Array} arr An Array
+ * @returns Object
+ */
+const arrToObj = (arr) => {
+  if (!Array.isArray(arr)) throw new Error("Input should be an array.");
+  return Object.fromEntries(arr);
+};
+```
+
+**Usage**
+
+```js
+arrToObj([
+  ["x", 1],
+  ["y", 2],
+]);
+
+// Output { x: 1, y: 2 }
+```
+
 ## Date & Time
 
 ### getTimes()
@@ -723,6 +751,38 @@ getInnerHTML(`
       </h1>
     </p>
     `); // HI
+```
+
+### objToArray()
+
+```js
+/**
+ * Converts Objects into two dimensional array.
+ * When index[0] is the `key` and index[1] is the `value`.
+ * @param {Object} obj An Object
+ * @returns Tow dimensional array.
+ */
+const objToArray = (obj) => {
+  if (Array.isArray(obj) || typeof obj !== "object") {
+    throw new Error("Input should be an Object");
+  }
+
+  return Object.entries(obj);
+};
+```
+
+**Usage**
+
+```js
+objToArray({ x: 1, y: 2 });
+
+// Output
+/*
+  [
+    ["x", 1],
+    ["y", 2],
+  ]
+*/
 ```
 
 ## Forms

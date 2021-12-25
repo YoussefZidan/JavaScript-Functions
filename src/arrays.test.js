@@ -64,3 +64,25 @@ describe("getUniqueObjs()", () => {
     expect(jsf.getUniqueObjs(arr)).toEqual(uniqArr);
   });
 });
+
+describe("arrToObj()", () => {
+  it("Converts two dimensional array into an object.", () => {
+    const output = jsf.arrToObj([
+      ["x", 1],
+      ["y", 2],
+    ]);
+    expect(output).toEqual({ x: 1, y: 2 });
+  });
+  
+  it("Should throw an error", () => {
+    expect(() => jsf.arrToObj({ x: 1, y: 2 })).toThrow();
+  });
+
+  it("Should throw an error", () => {
+    expect(() => jsf.arrToObj("X")).toThrow();
+  });
+
+  it("Should throw an error", () => {
+    expect(() => jsf.arrToObj(1)).toThrow();
+  });
+});

@@ -37,8 +37,20 @@ const getUniqueObjs = (array, key = "id") => {
   return output;
 };
 
+/**
+ * Converts two dimensional array into an object.
+ * When index[0] is the `key` and index[1] ins the `value`.
+ * @param {Array} arr An Array
+ * @returns Object
+ */
+const arrToObj = (arr) => {
+  if (!Array.isArray(arr)) throw new Error("Input should be an array.");
+  return Object.fromEntries(arr);
+};
+
 module.exports = {
   containsAll,
   toggleArrayValue,
   getUniqueObjs,
+  arrToObj,
 };
