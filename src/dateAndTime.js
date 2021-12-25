@@ -109,6 +109,17 @@ const toUnixTimeStamp = (date) => {
   return Math.floor(new Date(date).getTime() / 1000);
 };
 
+/**
+ * Logs all Date methods starts with to*.
+ */
+const logToDateMethods = () => {
+  console.log(
+    Object.getOwnPropertyNames(Date.prototype)
+      .filter((name) => name.startsWith("to"))
+      .map((method) => `${method}: ${new Date()[method]()}`)
+  );
+};
+
 module.exports = {
   getTimes,
   today,
@@ -118,4 +129,5 @@ module.exports = {
   humanFriendlyDate,
   humanFriendlyTime,
   toUnixTimeStamp,
+  logToDateMethods,
 };

@@ -32,6 +32,7 @@
   - [toUTC()](#toutc)
   - [humanFriendlyDate()](#humanfriendlydate)
   - [humanFriendlyTime()](#humanfriendlytime)
+  - [logToDateMethods()](#logtodatemethods)
 - [Objects](#objects)
   - [toFormData()](#toformdata)
   - [softClone()](#softclone)
@@ -665,6 +666,42 @@ const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
 humanFriendlyTime(new Date()); // 12:42:53 PM
 
 humanFriendlyTime(new Date(), "ar-EG"); // ١٢:٤٣:٣٩ م
+```
+
+### logToDateMethods()
+
+```js
+/**
+ * Logs all Date methods starts with to*.
+ */
+const logToDateMethods = () => {
+  console.log(
+    Object.getOwnPropertyNames(Date.prototype)
+      .filter((name) => name.startsWith("to"))
+      .map((method) => `${method}: ${new Date()[method]()}`)
+  );
+};
+```
+
+**Usage**
+
+```js
+logToDateMethods();
+/*
+[
+  "toUTCString: Sat, 25 Dec 2021 15:24:35 GMT",
+  "toLocaleString: 12/25/2021, 5:24:35 PM",
+  "toLocaleDateString: 12/25/2021",
+  "toLocaleTimeString: 5:24:35 PM",
+  "toDateString: Sat Dec 25 2021",
+  "toTimeString: 17:24:35 GMT+0200 (Eastern European Standard Time)",
+  "toISOString: 2021-12-25T15:24:35.983Z",
+  "toJSON: 2021-12-25T15:24:35.983Z",
+  "toString: Sat Dec 25 2021 17:24:35 GMT+0200 (Eastern European Standard Time)",
+  "toGMTString: Sat, 25 Dec 2021 15:24:35 GMT",
+];
+
+*/
 ```
 
 ## Objects
