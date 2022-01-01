@@ -3,7 +3,24 @@ const jsf = require("./strings");
 describe("capitalize()", () => {
   it("should return a capitalized string", () => {
     expect(jsf.capitalize("cat")).toBe("Cat");
-    expect(jsf.capitalize("")).toBe("");
+  });
+
+  it("should throw an error", () => {
+    expect(() => {
+      jsf.capitalize(1);
+    }).toThrow();
+  });
+
+  it("should throw an error", () => {
+    expect(() => {
+      jsf.capitalize({});
+    }).toThrow();
+  });
+
+  it("should throw an error", () => {
+    expect(() => {
+      jsf.capitalize([]);
+    }).toThrow();
   });
 });
 
@@ -67,7 +84,7 @@ describe("hashCardNum()", () => {
       jsf.hashCardNum("1599");
     }).toThrow();
   });
-  
+
   it("Should throw an error", () => {
     expect(() => {
       jsf.hashCardNum("1599 9874 5632 1459 0000");

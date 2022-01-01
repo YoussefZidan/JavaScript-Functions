@@ -93,7 +93,7 @@ jsf.capitalize("cat"); // Cat
  * @param {string} s String that will be Capitalized.
  */
 const capitalize = (s) => {
-  if (typeof s !== "string") return "";
+  if (typeof s !== "string") throw new Error("Input has to be a String!");
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 ```
@@ -125,6 +125,9 @@ const truncate = (text, num = 10) => {
 ```js
 truncate("this is some long string to be truncated");
 // this is...
+
+truncate("this is some long string to be truncated", 15);
+// this is some...
 ```
 
 ### toggleStrNum()
