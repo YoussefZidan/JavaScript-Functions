@@ -5,21 +5,9 @@ describe("capitalize()", () => {
     expect(jsf.capitalize("cat")).toBe("Cat");
   });
 
-  it("should throw an error", () => {
+  it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
     expect(() => {
-      jsf.capitalize(1);
-    }).toThrow();
-  });
-
-  it("should throw an error", () => {
-    expect(() => {
-      jsf.capitalize({});
-    }).toThrow();
-  });
-
-  it("should throw an error", () => {
-    expect(() => {
-      jsf.capitalize([]);
+      jsf.capitalize(val);
     }).toThrow();
   });
 });
@@ -30,16 +18,28 @@ describe("truncate()", () => {
       "this..."
     );
   });
+
+  it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
+    expect(() => {
+      jsf.truncate(val);
+    }).toThrow();
+  });
 });
 
 describe("toggleStrNum()", () => {
   it("should return toggled string '1', '0'", () => {
     expect(jsf.toggleStrNum("1")).toBe("0");
     expect(jsf.toggleStrNum("0")).toBe("1");
-    expect(jsf.toggleStrNum(null)).toBe(null);
-    expect(jsf.toggleStrNum("abc")).toBe(null);
-    expect(jsf.toggleStrNum(undefined)).toBe(null);
   });
+
+  it.each([1, [], {}, null, undefined, "abc"])(
+    "should throw an error",
+    (val) => {
+      expect(() => {
+        jsf.toggleStrNum(val);
+      }).toThrow();
+    }
+  );
 });
 
 describe("camelCaseToSpaces()", () => {
@@ -47,6 +47,12 @@ describe("camelCaseToSpaces()", () => {
     expect(jsf.camelCaseToSpaces("ACamelCaseString")).toEqual(
       "A Camel Case String"
     );
+  });
+
+  it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
+    expect(() => {
+      jsf.camelCaseToSpaces(val);
+    }).toThrow();
   });
 });
 
@@ -76,6 +82,12 @@ describe("getInnerHTML()", () => {
     `)
     ).toBe("HI");
   });
+
+  it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
+    expect(() => {
+      jsf.getInnerHTML(val);
+    }).toThrow();
+  });
 });
 
 describe("hashCardNum()", () => {
@@ -101,5 +113,11 @@ describe("hashCardNum()", () => {
     expect(jsf.hashCardNum("1599 9874 5632 1459")).toEqual(
       "#### #### #### 1459"
     );
+  });
+
+  it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
+    expect(() => {
+      jsf.hashCardNum(val);
+    }).toThrow();
   });
 });
