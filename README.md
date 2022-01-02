@@ -157,14 +157,19 @@ toggleStrNum("1"); // "0"
  * @param {string} str CamelCase string
  * @returns {string}
  */
-const camelCaseToSpaces = (str) =>
-  str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+const camelCaseToSpaces = (str) => {
+  if (typeof str !== "string") throw new Error("Input has to be a String!");
+
+  let regex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+  return str.replace(regex, "$1$4 $2$3$5");
+};
 ```
 
 **Usage**
 
 ```js
-camelCaseToSpaces("ABCLoremIpsumCSSAndHTML"); // ABC Lorem Ipsum CSS And HTML
+camelCaseToSpaces("ABCLoremIpsumCSSAndHTML");
+// ABC Lorem Ipsum CSS And HTML
 ```
 
 ### logFormattedStrings()
