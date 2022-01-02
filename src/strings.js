@@ -42,7 +42,9 @@ const toggleStrNum = (str) => {
  */
 const camelCaseToSpaces = (str) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
-  else return str.replace(/\B[A-Z]\B/g, (match) => ` ${match}`);
+
+  let regex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+  return str.replace(regex, "$1$4 $2$3$5");
 };
 
 /**

@@ -43,11 +43,19 @@ describe("toggleStrNum()", () => {
 });
 
 describe("camelCaseToSpaces()", () => {
-  it("Converts CamelCase string into string with spaces", () => {
-    expect(jsf.camelCaseToSpaces("ACamelCaseString")).toEqual(
-      "A Camel Case String"
-    );
-  });
+  let testCases = [
+    ["ABCLoremIpsumCSSAndHTML", "ABC Lorem Ipsum CSS And HTML"],
+    ["test", "test"],
+    ["TEST", "TEST"],
+    ["Test", "Test"],
+  ];
+
+  it.each(testCases)(
+    "Converts CamelCase string into string with spaces",
+    (val, expected) => {
+      expect(jsf.camelCaseToSpaces(val)).toEqual(expected);
+    }
+  );
 
   it.each([1, [], {}, null, undefined])("should throw an error", (val) => {
     expect(() => {

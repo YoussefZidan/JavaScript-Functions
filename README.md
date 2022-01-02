@@ -164,7 +164,7 @@ const camelCaseToSpaces = (str) =>
 **Usage**
 
 ```js
-camelCaseToSpaces("CamelCaseWord"); // Camel Case Word
+camelCaseToSpaces("ABCLoremIpsumCSSAndHTML"); // ABC Lorem Ipsum CSS And HTML
 ```
 
 ### logFormattedStrings()
