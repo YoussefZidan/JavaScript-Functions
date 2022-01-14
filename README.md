@@ -233,8 +233,10 @@ randomId(); // kw3npdsaw22i8ghr2i
  * @returns hashed card number
  */
 const hashCardNum = (str, symbol = "#") => {
+  if (typeof str !== "string") throw new Error("Input has to be a String!");
+
   let string = str.replace(/ /g, "");
-  if (string.length != 16) throw new Error("Card number must be 16 digits");
+  if (string.length !== 16) throw new Error("Card number must be 16 digits");
   else {
     let hashSymbol = new Array(12)
       .fill(symbol)
@@ -249,7 +251,10 @@ const hashCardNum = (str, symbol = "#") => {
 
 ```js
 hashCardNum("1599 9874 5632 1459"); // #### #### #### 1459
+
 hashCardNum("1599 9874 5632 1459", "*"); // **** **** **** 1459
+
+hashCardNum("1599 9874 5632"); // Throws an Error
 ```
 
 ## Numbers
