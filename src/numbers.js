@@ -10,31 +10,17 @@ const randomNumber = (min = 0, max = 1000) =>
   Math.ceil(min + Math.random() * (max - min));
 
 /**
- * Returns Converting Bytes in a Readable Human File Sizes.
+ * Converts Bytes into Digital Storage Sizes.
  * @param {number} bytes Bytes in number.
  */
-const humanFileSize = (bytes) => {
-  let BYTES = bytes;
-  const thresh = 1024;
+const bytesToSizes = (bytes, thresh = 1024) => {
+  const BYTES = +bytes;
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
-  if (Math.abs(BYTES) < thresh) {
-    return `${BYTES} B`;
-  }
+  if (BYTES <= 1) return `${BYTES} Byte`;
 
-  const units = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-  let u = -1;
-  const r = 10 ** 1;
-
-  do {
-    BYTES /= thresh;
-    u += 1;
-  } while (
-    Math.round(Math.abs(BYTES) * r) / r >= thresh &&
-    u < units.length - 1
-  );
-
-  return `${BYTES.toFixed(1)} ${units[u]}`;
+  const i = parseInt(Math.floor(Math.log(BYTES) / Math.log(thresh)));
+  return Math.round(BYTES / Math.pow(thresh, i), 2) + " " + sizes[i];
 };
 
 /**
@@ -48,6 +34,6 @@ const formatNumber = (num, lang, options) =>
 
 module.exports = {
   randomNumber,
-  humanFileSize,
+  bytesToSizes,
   formatNumber,
 };

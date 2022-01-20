@@ -16,16 +16,38 @@ describe("formatNumber()", () => {
   });
 });
 
-describe("humanFileSize()", () => {
+describe("bytesToSizes()", () => {
   it("should return readable human file sizes", () => {
-    expect(jsf.humanFileSize(1000)).toBe("1000 B");
-    expect(jsf.humanFileSize(10000)).toBe("9.8 KB");
-    expect(jsf.humanFileSize(10000000)).toBe("9.5 MB");
-    expect(jsf.humanFileSize(10000000000)).toBe("9.3 GB");
-    expect(jsf.humanFileSize(10000000000000)).toBe("9.1 TB");
-    expect(jsf.humanFileSize(10000000000000000)).toBe("8.9 PB");
-    expect(jsf.humanFileSize(10000000000000000000)).toBe("8.7 EB");
-    expect(jsf.humanFileSize(10000000000000000000000)).toBe("8.5 ZB");
-    expect(jsf.humanFileSize(10000000000000000000000000)).toBe("8.3 YB");
+    expect(jsf.bytesToSizes(0)).toBe("0 Byte");
+    expect(jsf.bytesToSizes(1)).toBe("1 Byte");
+    expect(jsf.bytesToSizes(1024)).toBe("1 KB");
+    expect(jsf.bytesToSizes(1_048_576)).toBe("1 MB");
+    expect(jsf.bytesToSizes(1_073_741_824)).toBe("1 GB");
+    expect(jsf.bytesToSizes(1_099_511_627_776)).toBe("1 TB");
+    expect(jsf.bytesToSizes(1_125_899_906_842_624)).toBe("1 PB");
+    expect(jsf.bytesToSizes(1.152921504606847e18)).toBe("1 EB");
+    expect(jsf.bytesToSizes(1.180591620717411e21)).toBe("1 ZB");
+    expect(jsf.bytesToSizes(1.208925819614629e24)).toBe("1 YB");
+
+    // Testing String Input
+    expect(jsf.bytesToSizes("1024")).toBe("1 KB");
+
+    // Using Thresh
+    const thresh = 1000;
+    expect(jsf.bytesToSizes(0, thresh)).toBe("0 Byte");
+    expect(jsf.bytesToSizes(1, thresh)).toBe("1 Byte");
+    expect(jsf.bytesToSizes(1000, thresh)).toBe("1 KB");
+    expect(jsf.bytesToSizes(1000_000, thresh)).toBe("1 MB");
+    expect(jsf.bytesToSizes(1000_000_000, thresh)).toBe("1 GB");
+    expect(jsf.bytesToSizes(1000_000_000_000, thresh)).toBe("1 TB");
+    expect(jsf.bytesToSizes(1000_000_000_000_000, thresh)).toBe("1 PB");
+    expect(jsf.bytesToSizes(1000_000_000_000_000_000, thresh)).toBe("1 EB");
+    expect(jsf.bytesToSizes(1000_000_000_000_000_000_000, thresh)).toBe("1 ZB");
+    expect(jsf.bytesToSizes(1000_000_000_000_000_000_000_000, thresh)).toBe(
+      "1 YB"
+    );
+
+    // Testing String Input
+    expect(jsf.bytesToSizes("1000", thresh)).toBe("1 KB");
   });
 });
