@@ -16,7 +16,7 @@
   - [hashCardNum()](#hashcardnum)
 - [Numbers](#numbers)
   - [randomNumber()](#randomnumber)
-  - [bytesToSizes()](#bytesToSizes)
+  - [bytesToSizes()](#bytestosizes)
   - [formatNumber()](#formatnumber)
 - [Arrays](#arrays)
   - [containsAll()](#containsall)
@@ -203,6 +203,26 @@ logFormattedStrings({ fName: "John", lName: "Doe" });
  * @param {string} str A string of HTML.
  */
 const getInnerHTML = (str) => str.replace(/(<([^>]+)>)/gi, "").trim();
+```
+
+**Usage**
+
+```js
+getInnerHTML("<h1>HI</h1>"); // HI
+
+getInnerHTML(`
+    <p>
+      <h1>HI</h1>
+    </p>
+    `); // HI
+
+getInnerHTML(`
+      <p>
+        <h1>
+          <span>HI</span>
+        </h1>
+      </p>
+    `); // HI
 ```
 
 ### randomId()
