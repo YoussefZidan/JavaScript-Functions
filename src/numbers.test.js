@@ -49,20 +49,18 @@ describe("bytesToSizes()", () => {
     expect(jsf.bytesToSizes("1000", thresh)).toBe("1 KB");
   });
 
-  it.each([[], {}, null, undefined, "5px"])("should throw an error", (val) => {
-    expect(() => {
-      jsf.bytesToSizes(val);
-    }).toThrow();
-  });
+  it.each([[], {}, null, undefined, "5px", "abc"])(
+    "should throw an error",
+    (val) => {
+      expect(() => {
+        jsf.bytesToSizes(val);
+      }).toThrow();
+    }
+  );
 
-  it.each([
-    [1, []],
-    [1, {}],
-    [1, null],
-    [1, "5px"],
-  ])("should throw an error", (bytes, thresh) => {
+  it.each([[], {}, null, "5px", "abc"])("should throw an error", (thresh) => {
     expect(() => {
-      jsf.bytesToSizes(bytes, thresh);
+      jsf.bytesToSizes(1, thresh);
     }).toThrow();
   });
 });
