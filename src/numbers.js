@@ -14,9 +14,22 @@ const randomNumber = (min = 0, max = 1000) =>
  * @param {number} bytes Bytes in number.
  */
 const bytesToSizes = (bytes, thresh = 1024) => {
+  if (isNaN(bytes) || isNaN(parseFloat(bytes))) {
+    throw new Error(
+      `Input has to be a Number or String Number, You entered '${JSON.stringify(
+        bytes
+      )}'`
+    );
+  }
+  if (isNaN(thresh) || isNaN(parseFloat(thresh))) {
+    throw new Error(
+      `Thresh has to be a Number, You entered '${JSON.stringify(bytes)}'`
+    );
+  }
+
   const BYTES = +bytes;
   if (BYTES <= 1) return `${BYTES} Byte`;
-  
+
   const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
   const i = parseInt(Math.floor(Math.log(BYTES) / Math.log(thresh)));
