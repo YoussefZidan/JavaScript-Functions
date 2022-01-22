@@ -12,6 +12,7 @@ const randomNumber = (min = 0, max = 1000) =>
 /**
  * Converts Bytes into Digital Storage Sizes.
  * @param {number} bytes Bytes in number.
+ * @param {number} thresh The thresh of bytes.
  */
 const bytesToSizes = (bytes, thresh = 1024) => {
   if (isNaN(bytes) || isNaN(parseFloat(bytes))) {

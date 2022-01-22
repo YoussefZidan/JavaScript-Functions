@@ -304,8 +304,22 @@ randomNumber()); // 97
 /**
  * Converts Bytes into Digital Storage Sizes.
  * @param {number} bytes Bytes in number.
+ * @param {number} thresh The thresh of bytes.
  */
 const bytesToSizes = (bytes, thresh = 1024) => {
+  if (isNaN(bytes) || isNaN(parseFloat(bytes))) {
+    throw new Error(
+      `Input has to be a Number or String Number, You entered '${JSON.stringify(
+        bytes
+      )}'`
+    );
+  }
+  if (isNaN(thresh) || isNaN(parseFloat(thresh))) {
+    throw new Error(
+      `Thresh has to be a Number, You entered '${JSON.stringify(bytes)}'`
+    );
+  }
+
   const BYTES = +bytes;
   if (BYTES <= 1) return `${BYTES} Byte`;
 
