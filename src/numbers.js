@@ -15,9 +15,9 @@ const randomNumber = (min = 0, max = 1000) =>
  */
 const bytesToSizes = (bytes, thresh = 1024) => {
   const BYTES = +bytes;
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
   if (BYTES <= 1) return `${BYTES} Byte`;
+  
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
   const i = parseInt(Math.floor(Math.log(BYTES) / Math.log(thresh)));
   return Math.round(BYTES / Math.pow(thresh, i), 2) + " " + sizes[i];

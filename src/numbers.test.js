@@ -29,9 +29,6 @@ describe("bytesToSizes()", () => {
     expect(jsf.bytesToSizes(1.180591620717411e21)).toBe("1 ZB");
     expect(jsf.bytesToSizes(1.208925819614629e24)).toBe("1 YB");
 
-    // Testing String Input
-    expect(jsf.bytesToSizes("1024")).toBe("1 KB");
-
     // Using Thresh
     const thresh = 1000;
     expect(jsf.bytesToSizes(0, thresh)).toBe("0 Byte");
@@ -48,6 +45,7 @@ describe("bytesToSizes()", () => {
     );
 
     // Testing String Input
+    expect(jsf.bytesToSizes("1024")).toBe("1 KB");
     expect(jsf.bytesToSizes("1000", thresh)).toBe("1 KB");
   });
 });

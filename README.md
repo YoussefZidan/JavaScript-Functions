@@ -306,12 +306,13 @@ randomNumber()); // 97
  * @param {number} bytes Bytes in number.
  */
 const bytesToSizes = (bytes, thresh = 1024) => {
+  const BYTES = +bytes;
+  if (BYTES <= 1) return `${BYTES} Byte`;
+
   const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
-  if (bytes === 0) return "0 Byte";
-
-  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(thresh)));
-  return Math.round(bytes / Math.pow(thresh, i), 2) + " " + sizes[i];
+  const i = parseInt(Math.floor(Math.log(BYTES) / Math.log(thresh)));
+  return Math.round(BYTES / Math.pow(thresh, i), 2) + " " + sizes[i];
 };
 ```
 
