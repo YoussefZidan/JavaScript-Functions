@@ -43,15 +43,15 @@ const appendURLParams = (paramName, value) => {
  * Caching values with expiry date to the LocalStorage.
  * @param {string} key Local Storage Key
  * @param {any} value Local Storage Value
- * @param {number} ttl Time to live (Expiry Date in MS)
+ * @param {number} exp Expiry Date (in MS)
  */
-const setLocalItem = (key, value, ttl) => {
+const setLocalItem = (key, value, exp) => {
   const now = new Date();
-  // `item` is an object which contains the original value
-  // as well as the time when it's supposed to expire
+  // The item is the object that holds the original value
+  // as well as the expiration date.
   const item = {
     value,
-    expiry: now.getTime() + ttl,
+    expiry: now.getTime() + exp,
   };
   localStorage.setItem(key, JSON.stringify(item));
 };
@@ -123,7 +123,7 @@ const remToPx = (rem) => {
 /**
  * console.assert a value and displays a message
  */
-const assert = (val, msg="Provided value is falsy") => {
+const assert = (val, msg = "Provided value is falsy") => {
   console.assert(val, msg);
 };
 
@@ -137,5 +137,5 @@ module.exports = {
   scrollToHide,
   pxToRem,
   remToPx,
-  assert
+  assert,
 };
