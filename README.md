@@ -23,7 +23,7 @@
   - [toggleArrayValue()](#togglearrayvalue)
   - [getUniqueObjs()](#getuniqueobjs)
   - [arrToObj()](#arrtoobj)
-- [dummyArr()](#dummyarr)
+  - [dummyArr()](#dummyarr)
 - [Date & Time](#date--time)
   - [getTimes()](#gettimes)
   - [today()](#today)
@@ -511,7 +511,7 @@ arrToObj([
 // Output { x: 1, y: 2 }
 ```
 
-## dummyArr()
+### dummyArr()
 
 ```js
 /**
