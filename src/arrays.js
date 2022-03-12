@@ -48,9 +48,19 @@ const arrToObj = (arr) => {
   return Object.fromEntries(arr);
 };
 
+/**
+ * Generates a dummy array with optional fill.
+ * @param {Number} length the length of the array.
+ * @param {Any} fill fill of every element in the generated array.
+ */
+const dummyArr = (length, fill = '') => {
+  return [...new Array(length).fill(fill)]
+}
+
 module.exports = {
   containsAll,
   toggleArrayValue,
   getUniqueObjs,
   arrToObj,
+  dummyArr
 };

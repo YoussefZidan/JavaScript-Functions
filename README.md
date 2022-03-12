@@ -23,6 +23,7 @@
   - [toggleArrayValue()](#togglearrayvalue)
   - [getUniqueObjs()](#getuniqueobjs)
   - [arrToObj()](#arrtoobj)
+- [dummyArr()](#dummyarr)
 - [Date & Time](#date--time)
   - [getTimes()](#gettimes)
   - [today()](#today)
@@ -508,6 +509,29 @@ arrToObj([
 ]);
 
 // Output { x: 1, y: 2 }
+```
+
+## dummyArr()
+
+```js
+/**
+ * Generates a dummy array with optional fill.
+ * @param {Number} length the length of the array.
+ * @param {Any} fill fill of every element in the generated array.
+ */
+const dummyArr = (length, fill = "") => {
+  return [...new Array(length).fill(fill)];
+};
+```
+
+**Usage**
+
+```js
+dummyArr(10); // ['', '', '', '', '', '', '', '', '', '']
+
+dummyArr(10, "str"); // ['str', 'str', 'str', 'str', 'str', 'str', 'str', 'str', 'str', 'str']
+
+dummyArr(10, true); // [true, true, true, true, true, true, true, true, true, true]
 ```
 
 ## Date & Time
