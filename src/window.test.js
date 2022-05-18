@@ -37,3 +37,26 @@ describe("pxToRem()", () => {
     expect(jsf.pxToRem(14)).toBe(1);
   });
 });
+
+describe("objToQueryStr()", () => {
+  it("Converts an Object into a Query String", () => {
+    expect(jsf.objToQueryStr({ search: "Search Key" })).toBe(
+      "search=Search+Key"
+    );
+    expect(jsf.objToQueryStr({ search: "Search Key", page: "1" })).toBe(
+      "search=Search+Key&page=1"
+    );
+  });
+});
+
+describe("objToQueryStr()", () => {
+  it("Converts a Query String into an Object with Key and Value pairs", () => {
+    expect(jsf.queryStrToObj("search=Search+Key")).toEqual({
+      search: "Search Key",
+    });
+    expect(jsf.queryStrToObj("search=Search+Key&page=1")).toEqual({
+      search: "Search Key",
+      page: "1",
+    });
+  });
+});

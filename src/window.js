@@ -127,6 +127,23 @@ const assert = (val, msg = "Provided value is falsy") => {
   console.assert(val, msg);
 };
 
+/**
+ * Converts an Object into a Query String
+ * @param {Object} obj Key and Value Pairs
+ * @returns {String} Query String
+ */
+const objToQueryStr = (obj) => new URLSearchParams(obj).toString();
+
+/**
+ * Converts a Query String into an Object with Key and Value pairs
+ * @param {String} str Query String
+ * @returns {Object} Key and Value pairs of the provided Query String
+ */
+const queryStrToObj = (str) => {
+  const urlParams = new URLSearchParams(str);
+  return Object.fromEntries(urlParams);
+};
+
 module.exports = {
   getScreenWidth,
   toTop,
@@ -138,4 +155,6 @@ module.exports = {
   pxToRem,
   remToPx,
   assert,
+  objToQueryStr,
+  queryStrToObj,
 };
