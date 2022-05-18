@@ -51,6 +51,8 @@
   - [pxToRem()](#pxtorem)
   - [remToPx()](#remtopx)
   - [assert()](#assert)
+  - [objToQueryStr()](#objtoquerystr)
+  - [queryStrToObj()](#querystrtoobj)
 
 ## Description
 
@@ -1152,4 +1154,42 @@ assert(0); // Assertion failed: Provided value is falsy.
 assert(false, "The value is false"); // Assertion failed: The value is false.
 
 assert(true); // undefined
+```
+
+### objToQueryStr()
+
+```js
+/**
+ * Converts an Object into a Query String
+ * @param {Object} obj Key and Value Pairs
+ * @returns {String} Query String
+ */
+const objToQueryStr = (obj) => new URLSearchParams(obj).toString();
+```
+
+**Usage**
+
+```js
+jsf.objToQueryStr({ search: "Search Key" }); // search=Search+Key
+
+jsf.objToQueryStr({ search: "Search Key", page: "1" }); // search=Search+Key&page=1
+```
+
+### queryStrToObj()
+
+```js
+/**
+ * Converts an Object into a Query String
+ * @param {Object} obj Key and Value Pairs
+ * @returns {String} Query String
+ */
+const queryStrToObj = (obj) => new URLSearchParams(obj).toString();
+```
+
+**Usage**
+
+```js
+jsf.queryStrToObj("search=Search+Key"); // { search: "Search Key" }
+
+jsf.queryStrToObj("search=Search+Key&page=1"); // { search: "Search Key", page: "1" }
 ```

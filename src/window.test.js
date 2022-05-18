@@ -49,7 +49,7 @@ describe("objToQueryStr()", () => {
   });
 });
 
-describe("objToQueryStr()", () => {
+describe("queryStrToObj()", () => {
   it("Converts a Query String into an Object with Key and Value pairs", () => {
     expect(jsf.queryStrToObj("search=Search+Key")).toEqual({
       search: "Search Key",
