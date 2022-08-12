@@ -67,15 +67,6 @@ npm i javascript-functions
 
 ## Usage
 
-**node.js**
-
-```js
-const jsf = require("javascript-functions");
-jsf.capitalize("cat"); // Cat
-```
-
-**ES6**
-
 ```js
 import * as jsf = from "javascript-functions";
 // OR
