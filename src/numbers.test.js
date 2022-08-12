@@ -1,4 +1,4 @@
-const jsf = require("./numbers");
+import * as jsf from "./numbers.js";
 
 describe("randomNumber()", () => {
   it("should return a random number between min and max", () => {

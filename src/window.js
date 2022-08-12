@@ -3,7 +3,7 @@
 /**
  * Detect screen width and returns a string representing the width of the screen.
  */
-const getScreenWidth = () => {
+export const getScreenWidth = () => {
   const screenWidth = window.outerWidth;
   if (screenWidth <= 425) return "mobile";
   if (screenWidth <= 768) return "tablet";
@@ -16,7 +16,7 @@ const getScreenWidth = () => {
 /**
  * Scroll to top
  */
-const toTop = (behavior = "smooth") => {
+export const toTop = (behavior = "smooth") => {
   window.scroll({ top: 0, left: 0, behavior });
 };
 
@@ -24,7 +24,7 @@ const toTop = (behavior = "smooth") => {
  * Returns param name from a URL.
  * @param {string} name
  */
-const getURLParams = (name) => {
+export const getURLParams = (name) => {
   return new URLSearchParams(window.location.search).get(name);
 };
 
@@ -33,7 +33,7 @@ const getURLParams = (name) => {
  * @param {string} key
  * @param {string} value
  */
-const appendURLParams = (paramName, value) => {
+export const appendURLParams = (paramName, value) => {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set(paramName, value);
   return searchParams.toString();
@@ -45,7 +45,7 @@ const appendURLParams = (paramName, value) => {
  * @param {any} value Local Storage Value
  * @param {number} exp Expiry Date (in MS)
  */
-const setLocalItem = (key, value, exp) => {
+export const setLocalItem = (key, value, exp) => {
   const now = new Date();
   // The item is the object that holds the original value
   // as well as the expiration date.
@@ -60,7 +60,7 @@ const setLocalItem = (key, value, exp) => {
  * Getting values with expiry date from LocalStorage that stored with `setLocalItem`.
  * @param {string} key Local Storage Key
  */
-const getLocalItem = (key) => {
+export const getLocalItem = (key) => {
   const itemStr = localStorage.getItem(key);
   // if the item doesn't exist, return null
   if (!itemStr) {
@@ -83,7 +83,7 @@ const getLocalItem = (key) => {
  * @param {string} id the `id` of an `HTML` element.
  * @param {number} distance An integer of pixels.
  */
-const scrollToHide = (id, distance) => {
+export const scrollToHide = (id, distance) => {
   const distanceDown = distance;
   const distanceUp = distance * 2;
   let prevScrollpos = window.pageYOffset;
@@ -107,7 +107,7 @@ const scrollToHide = (id, distance) => {
  * @param {number} px Pixels
  * @returns {number}
  */
-const pxToRem = (px) => {
+export const pxToRem = (px) => {
   return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
 };
 
@@ -116,14 +116,14 @@ const pxToRem = (px) => {
  * @param {number} rem Rem
  * @returns {number}
  */
-const remToPx = (rem) => {
+export const remToPx = (rem) => {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 };
 
 /**
  * console.assert a value and displays a message
  */
-const assert = (val, msg = "Provided value is falsy") => {
+export const assert = (val, msg = "Provided value is falsy") => {
   console.assert(val, msg);
 };
 
@@ -132,29 +132,14 @@ const assert = (val, msg = "Provided value is falsy") => {
  * @param {Object} obj Key and Value Pairs
  * @returns {String} Query String
  */
-const objToQueryStr = (obj) => new URLSearchParams(obj).toString();
+export const objToQueryStr = (obj) => new URLSearchParams(obj).toString();
 
 /**
  * Converts a Query String into an Object with Key and Value pairs
  * @param {String} str Query String
  * @returns {Object} Key and Value pairs of the provided Query String
  */
-const queryStrToObj = (str) => {
+export const queryStrToObj = (str) => {
   const urlParams = new URLSearchParams(str);
   return Object.fromEntries(urlParams);
-};
-
-module.exports = {
-  getScreenWidth,
-  toTop,
-  getURLParams,
-  appendURLParams,
-  setLocalItem,
-  getLocalItem,
-  scrollToHide,
-  pxToRem,
-  remToPx,
-  assert,
-  objToQueryStr,
-  queryStrToObj,
 };

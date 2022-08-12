@@ -6,9 +6,5 @@
  * @param {Array<string>} charArr array of chars
  * @returns {boolean} boolean
  */
-const preventChars = (event, charArr) =>
+export const preventChars = (event, charArr) =>
   charArr.includes(event.key) && event.preventDefault();
-
-module.exports = {
-  preventChars,
-};

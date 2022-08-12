@@ -6,7 +6,7 @@
  * @param {number} minutesInterval every *n* minutes [default = 15].
  * @returns {Array} Array of time.
  */
-const getTimes = (startTime = 0, minutesInterval = 15) => {
+export const getTimes = (startTime = 0, minutesInterval = 15) => {
   const times = []; // time array
   const x = minutesInterval; // minutes interval
   let tt = startTime; // start time
@@ -36,7 +36,7 @@ const getTimes = (startTime = 0, minutesInterval = 15) => {
  * Returns Today's date.
  * @returns {Date} Today's date.
  */
-const today = () => {
+export const today = () => {
   return new Date();
 };
 
@@ -44,7 +44,7 @@ const today = () => {
  * Returns Tomorrow's date
  * @returns {Date} Tomorrow's date
  */
-const tomorrow = () => {
+export const tomorrow = () => {
   const day = new Date();
   day.setDate(day.getDate() + 1);
   return day;
@@ -55,7 +55,7 @@ const tomorrow = () => {
  * @param {Date} date date
  * @returns {Number} In time stamp formate in milliseconds.
  */
-const toTimeStamp = (date) => {
+export const toTimeStamp = (date) => {
   return new Date(date).getTime();
 };
 
@@ -64,7 +64,7 @@ const toTimeStamp = (date) => {
  * @param {Date} date date
  * @returns {String} In UTC timezone.
  */
-const toUTC = (date) => {
+export const toUTC = (date) => {
   return new Date(date).toGMTString();
 };
 
@@ -79,7 +79,11 @@ const toUTC = (date) => {
  * @param {String} options.day
  * @returns {String} Human readable date.
  */
-const humanFriendlyDate = (date = new Date(), locales = "en-US", options) => {
+export const humanFriendlyDate = (
+  date = new Date(),
+  locales = "en-US",
+  options
+) => {
   const O = {
     weekday: "short",
     year: "numeric",
@@ -96,7 +100,7 @@ const humanFriendlyDate = (date = new Date(), locales = "en-US", options) => {
  * @param {String} locales [default "en-Us"].
  * @returns {String} Human readable date.
  */
-const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
+export const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
   return date.toLocaleTimeString(locales);
 };
 
@@ -105,29 +109,17 @@ const humanFriendlyTime = (date = new Date(), locales = "en-US") => {
  * @param {Date} date date
  * @returns {Number} In unix timestamp formate.
  */
-const toUnixTimeStamp = (date) => {
+export const toUnixTimeStamp = (date) => {
   return Math.floor(new Date(date).getTime() / 1000);
 };
 
 /**
  * Logs all Date methods starts with to*.
  */
-const logToDateMethods = () => {
+export const logToDateMethods = () => {
   console.log(
     Object.getOwnPropertyNames(Date.prototype)
       .filter((name) => name.startsWith("to"))
       .map((method) => `${method}: ${new Date()[method]()}`)
   );
-};
-
-module.exports = {
-  getTimes,
-  today,
-  tomorrow,
-  toTimeStamp,
-  toUTC,
-  humanFriendlyDate,
-  humanFriendlyTime,
-  toUnixTimeStamp,
-  logToDateMethods,
 };

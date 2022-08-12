@@ -1,4 +1,4 @@
-const jsf = require("./objects");
+import * as jsf from "./objects.js";
 
 describe("objToArray()", () => {
   it("Converts Objects into two dimensional array", () => {

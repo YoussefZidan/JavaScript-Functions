@@ -6,7 +6,7 @@
  * @param {number} max Max Number [default = 1000].
  *
  */
-const randomNumber = (min = 0, max = 1000) =>
+export const randomNumber = (min = 0, max = 1000) =>
   Math.ceil(min + Math.random() * (max - min));
 
 /**
@@ -14,7 +14,7 @@ const randomNumber = (min = 0, max = 1000) =>
  * @param {number} bytes Bytes in number.
  * @param {number} thresh The thresh of bytes.
  */
-const bytesToSizes = (bytes, thresh = 1024) => {
+export const bytesToSizes = (bytes, thresh = 1024) => {
   if (isNaN(bytes) || isNaN(parseFloat(bytes))) {
     throw new Error(
       `Input has to be a Number or String Number, You entered '${JSON.stringify(
@@ -43,11 +43,5 @@ const bytesToSizes = (bytes, thresh = 1024) => {
  * @param {string} lang visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_locales
  * @param {object} options visit => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_options
  */
-const formatNumber = (num, lang, options) =>
+export const formatNumber = (num, lang, options) =>
   num.toLocaleString(lang, { ...options });
-
-module.exports = {
-  randomNumber,
-  bytesToSizes,
-  formatNumber,
-};

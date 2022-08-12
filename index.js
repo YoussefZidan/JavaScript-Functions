@@ -1,17 +1,7 @@
-const arrays = require("./src/arrays");
-const dateAndTime = require("./src/dateAndTime");
-const forms = require("./src/forms");
-const numbers = require("./src/numbers");
-const objects = require("./src/objects");
-const strings = require("./src/strings");
-const window = require("./src/window");
-
-module.exports = {
-  ...strings,
-  ...numbers,
-  ...arrays,
-  ...dateAndTime,
-  ...objects,
-  ...forms,
-  ...window,
-};
+export * from "./src/arrays.js";
+export * from "./src/dateAndTime.js";
+export * from "./src/forms.js";
+export * from "./src/numbers.js";
+export * from "./src/objects.js";
+export * from "./src/strings.js";
+export * from "./src/window.js";
