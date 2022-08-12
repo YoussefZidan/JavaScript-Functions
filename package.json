@@ -2,7 +2,7 @@
   "name": "javascript-functions",
   "version": "7.2.0",
   "description": "Commonly used JavaScript Functions",
-  "main": "scr/index.js",
+  "main": "index.js",
   "type": "module",
   "compilerOptions": {
     "lib": [
@@ -14,7 +14,6 @@
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "build": "babel src -d dist",
     "jsdoc": "jsdoc index.js -c jsdoc.json"
   },
   "repository": {
