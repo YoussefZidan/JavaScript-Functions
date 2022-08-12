@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const jsf = require("./window");
+import * as jsf from "./window.js";
 
 describe("getScreenWidth()", () => {
   it("returns a string representing the width of the screen", () => {

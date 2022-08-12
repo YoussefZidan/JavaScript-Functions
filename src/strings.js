@@ -4,7 +4,7 @@
  * Returns a capitalized String.
  * @param {string} s String that will be Capitalized.
  */
-const capitalize = (str) => {
+export const capitalize = (str) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
 
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -15,7 +15,7 @@ const capitalize = (str) => {
  * @param {string} str String to be truncated.
  * @param {number} num Max length of the `String` that will be truncated.
  */
-const truncate = (str, num = 10) => {
+export const truncate = (str, num = 10) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
 
   if (str.length > num) {
@@ -28,7 +28,7 @@ const truncate = (str, num = 10) => {
  * Returns toggled '1' or '0'.
  * @param {string} str String number "0" or "1".
  */
-const toggleStrNum = (str) => {
+export const toggleStrNum = (str) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
 
   if (str === "0" || str === "1") return str === "0" ? "1" : "0";
@@ -40,7 +40,7 @@ const toggleStrNum = (str) => {
  * @param {string} str CamelCase string
  * @returns {string}
  */
-const camelCaseToSpaces = (str) => {
+export const camelCaseToSpaces = (str) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
 
   let regex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
@@ -51,14 +51,14 @@ const camelCaseToSpaces = (str) => {
  * Logging formatted strings.
  * @param {any} input
  */
-const logFormattedStrings = (input) =>
+export const logFormattedStrings = (input) =>
   console.log(JSON.stringify(input, null, 4));
 
 /**
  * Getting the inner `Text` of an `HTML` string.
  * @param {string} str A string of HTML.
  */
-const getInnerHTML = (str) => {
+export const getInnerHTML = (str) => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
   else return str.replace(/(<([^>]+)>)/gi, "").trim();
 };
@@ -67,7 +67,7 @@ const getInnerHTML = (str) => {
  * Generates and returns a random ID
  * @returns {string}
  */
-const randomId = () => {
+export const randomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
@@ -77,7 +77,7 @@ const randomId = () => {
  * @param {string} symbol hash symbol.
  * @returns hashed card number
  */
-const hashCardNum = (str, symbol = "#") => {
+export const hashCardNum = (str, symbol = "#") => {
   if (typeof str !== "string") throw new Error("Input has to be a String!");
 
   let string = str.replace(/ /g, "");
@@ -89,15 +89,4 @@ const hashCardNum = (str, symbol = "#") => {
       .replace(/^(.{4})(.{4})(.*)$/, "$1 $2 $3");
     return `${hashSymbol} ` + string.slice(12);
   }
-};
-
-module.exports = {
-  capitalize,
-  truncate,
-  toggleStrNum,
-  camelCaseToSpaces,
-  logFormattedStrings,
-  getInnerHTML,
-  randomId,
-  hashCardNum,
 };

@@ -1,4 +1,4 @@
-const jsf = require("./strings");
+import * as jsf from "./strings.js";
 
 describe("capitalize()", () => {
   it("should return a capitalized string", () => {

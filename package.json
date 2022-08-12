@@ -2,9 +2,19 @@
   "name": "javascript-functions",
   "version": "7.2.0",
   "description": "Commonly used JavaScript Functions",
-  "main": "index.js",
+  "main": "scr/index.js",
+  "type": "module",
+  "compilerOptions": {
+    "lib": [
+      "es2020"
+    ],
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "target": "es2022"
+  },
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build": "babel src -d dist",
     "jsdoc": "jsdoc index.js -c jsdoc.json"
   },
   "repository": {
@@ -16,7 +26,9 @@
     "functions",
     "reusable",
     "jsf",
-    "utils"
+    "utils",
+    "vanilla",
+    "native"
   ],
   "author": "Youssef Zidan",
   "license": "ISC",
@@ -25,8 +37,9 @@
   },
   "homepage": "https://github.com/YoussefZidan/JavaScript-Functions#readme",
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
     "@types/jest": "^26.0.23",
     "babel-jest": "^27.0.6",
     "eslint": "^7.29.0",

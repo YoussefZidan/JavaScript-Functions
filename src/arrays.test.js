@@ -1,6 +1,7 @@
-const jsf = require("./arrays");
+import * as jsf from "./arrays.js";
 
-describe("containsAll()", () => {
+
+describe.only("containsAll()", () => {
   it("should return TRUE", () => {
     let baseArr = ["1", "2", "3"];
     let arr = ["1", "2", "3"];
@@ -73,7 +74,7 @@ describe("arrToObj()", () => {
     ]);
     expect(output).toEqual({ x: 1, y: 2 });
   });
-  
+
   it("Should throw an error", () => {
     expect(() => jsf.arrToObj({ x: 1, y: 2 })).toThrow();
   });

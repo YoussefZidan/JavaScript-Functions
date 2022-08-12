@@ -4,7 +4,7 @@
  * Convert Objects to Form Data Format.
  * @param {object} obj
  */
-const toFormData = (obj) => {
+export const toFormData = (obj) => {
   const formBody = new FormData();
   Object.keys(obj).forEach((key) => {
     if (Array.isArray(obj[key])) {
@@ -20,7 +20,7 @@ const toFormData = (obj) => {
  * Soft  cloning objects
  * @param {object} obj Input
  */
-const softClone = (obj) => JSON.parse(JSON.stringify(obj));
+export const softClone = (obj) => JSON.parse(JSON.stringify(obj));
 
 /**
  * Converts Objects into two dimensional array.
@@ -28,16 +28,10 @@ const softClone = (obj) => JSON.parse(JSON.stringify(obj));
  * @param {Object} obj An Object
  * @returns Tow dimensional array.
  */
-const objToArray = (obj) => {
+export const objToArray = (obj) => {
   if (Array.isArray(obj) || typeof obj !== "object") {
     throw new Error("Input should be an Object");
   }
 
   return Object.entries(obj);
-};
-
-module.exports = {
-  toFormData,
-  softClone,
-  objToArray,
 };
