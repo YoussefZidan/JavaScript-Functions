@@ -127,3 +127,27 @@ describe("pxToRem()", () => {
     expect(jsf.pxToRem(64)).toBe(4);
   });
 });
+
+describe("objToQueryStr()", () => {
+  it("converts an object to a URL query string correctly", () => {
+    expect(jsf.objToQueryStr({ param1: "value1", param2: "value2" })).toBe(
+      "param1=value1&param2=value2"
+    );
+    expect(jsf.objToQueryStr({ param3: "value3", param4: "value4" })).toBe(
+      "param3=value3&param4=value4"
+    );
+  });
+});
+
+describe("queryStrToObj()", () => {
+  it("converts a URL query string to an object correctly", () => {
+    expect(jsf.queryStrToObj("param1=value1&param2=value2")).toEqual({
+      param1: "value1",
+      param2: "value2",
+    });
+    expect(jsf.queryStrToObj("param3=value3&param4=value4")).toEqual({
+      param3: "value3",
+      param4: "value4",
+    });
+  });
+});
