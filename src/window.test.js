@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import { jest } from "@jest/globals";
 import * as jsf from "./window.js";
 
 describe("getScreenWidth()", () => {
@@ -58,5 +59,71 @@ describe("queryStrToObj()", () => {
       search: "Search Key",
       page: "1",
     });
+  });
+});
+
+describe.only("toTop()", () => {
+  it("scrolls to the top of the page with the default behavior", () => {
+    window.scroll = jest.fn();
+    jsf.toTop();
+    expect(window.scroll).toHaveBeenCalledWith({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+  it("scrolls to the top of the page with a custom behavior", () => {
+    window.scroll = jest.fn();
+    jsf.toTop("auto");
+    expect(window.scroll).toHaveBeenCalledWith({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  });
+});
+
+describe("getURLParams", () => {
+  it("returns the value of the specified URL parameter", () => {
+    Object.defineProperty(window, "location", {
+      value: {
+        search: "?param1=value1&param2=value2",
+      },
+    });
+
+    expect(jsf.getURLParams("param1")).toBe("value1");
+    expect(jsf.getURLParams("param2")).toBe("value2");
+  });
+
+  it("returns null if the specified URL parameter does not exist", () => {
+    Object.defineProperty(window, "location", {
+      value: {
+        search: "?param1=value1&param2=value2",
+      },
+    });
+
+    expect(jsf.getURLParams("param3")).toBeNull();
+  });
+});
+
+describe("pxToRem()", () => {
+  it("converts pixels to rems correctly", () => {
+    Object.defineProperty(document, "documentElement", {
+      value: {
+        style: {
+          fontSize: "16px",
+        },
+      },
+    });
+    const getComputedStyleMock = jest.fn().mockImplementation(() => {
+      return {
+        fontSize: "16px",
+      };
+    });
+    window.getComputedStyle = getComputedStyleMock;
+
+    expect(jsf.pxToRem(16)).toBe(1);
+    expect(jsf.pxToRem(32)).toBe(2);
+    expect(jsf.pxToRem(64)).toBe(4);
   });
 });
