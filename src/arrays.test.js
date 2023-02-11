@@ -1,7 +1,7 @@
 import * as jsf from "./arrays.js";
 
 
-describe.only("containsAll()", () => {
+describe("containsAll()", () => {
   it("should return TRUE", () => {
     let baseArr = ["1", "2", "3"];
     let arr = ["1", "2", "3"];

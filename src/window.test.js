@@ -62,7 +62,7 @@ describe("queryStrToObj()", () => {
   });
 });
 
-describe.only("toTop()", () => {
+describe("toTop()", () => {
   it("scrolls to the top of the page with the default behavior", () => {
     window.scroll = jest.fn();
     jsf.toTop();
