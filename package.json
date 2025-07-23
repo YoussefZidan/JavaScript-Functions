@@ -4,6 +4,7 @@
   "description": "Commonly used JavaScript Functions",
   "main": "index.js",
   "type": "module",
+  "types": "index.d.ts",
   "compilerOptions": {
     "lib": [
       "es2020"
